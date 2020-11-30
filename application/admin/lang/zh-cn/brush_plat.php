@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'Account'           => '平台账号',
+    'Recive'            => '收货人',
+    'Mobile'            => '手机号',
+    'Gender'            => '性别',
+    'Gender 1'          => '男',
+    'Gender 2'          => '女',
+    'Recive_city'       => '收货人省市区',
+    'Recive_address'    => '收货人详细地址',
+    'My_image'          => '我的页面截图',
+    'Myinfo_image'      => '我的资料截图',
+    'Ctime'             => '提交审核时间',
+    'Checktime'         => '审核时间',
+    'Status'            => '审核状态',
+    'Status 0'          => '未审核',
+    'Status 1'          => '审核通过',
+    'Status 2'          => '拒绝通过',
+    'Plat_id'           => '平台id',
+    'Brush_id'          => '刷手id',
+    'Plat.name'         => '平台名称',
+    'Brush.name'        => '姓名',
+    'Brush.mobile'      => '登录手机号',
+    'Brush.indent_name' => '身份证名字',
+    'Brush.indent_no'   => '身份证号',
+    'Brush.front'       => '身份证正面照',
+    'Brush.back'        => '身份证背面照',
+    'Brush.keep'        => '手持身份证照',
+    'Brush.ali'         => '支付宝认证照片'
+];

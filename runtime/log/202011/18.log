@@ -1,0 +1,16 @@
+---------------------------------------------------------------
+[ 2020-11-18T14:13:23+08:00 ] 106.117.9.13 GET bill.zhoujiasong.top/admin.php/order_brush/index?addtabs=1&sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1605679967917
+[运行时间：0.034380s] [吞吐率：29.09req/s] [内存消耗：4,537.64kb] [文件加载：142]
+[ error ] [0]类型错误: Too few arguments to function think\db\Query::order(), 0 passed and at least 1 expected[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Query.php:1559]
+---------------------------------------------------------------
+[ 2020-11-18T14:13:29+08:00 ] 106.117.9.13 GET bill.zhoujiasong.top/admin.php/order_brush/index?addtabs=1&sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1605679967918
+[运行时间：0.033779s] [吞吐率：29.60req/s] [内存消耗：4,537.65kb] [文件加载：142]
+[ error ] [0]类型错误: Too few arguments to function think\db\Query::order(), 0 passed and at least 1 expected[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Query.php:1559]
+---------------------------------------------------------------
+[ 2020-11-18T14:13:29+08:00 ] 106.117.9.13 GET bill.zhoujiasong.top/admin.php/order_brush/index?addtabs=1&sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1605679967919
+[运行时间：0.033792s] [吞吐率：29.59req/s] [内存消耗：4,537.65kb] [文件加载：142]
+[ error ] [0]类型错误: Too few arguments to function think\db\Query::order(), 0 passed and at least 1 expected[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Query.php:1559]
+---------------------------------------------------------------
+[ 2020-11-18T14:13:32+08:00 ] 106.117.9.13 GET bill.zhoujiasong.top/admin.php/order_brush/index?addtabs=1&sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1605679976741
+[运行时间：0.033308s] [吞吐率：30.02req/s] [内存消耗：4,537.65kb] [文件加载：142]
+[ error ] [0]类型错误: Too few arguments to function think\db\Query::order(), 0 passed and at least 1 expected[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Query.php:1559]

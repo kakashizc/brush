@@ -1,0 +1,120 @@
+---------------------------------------------------------------
+[ 2020-11-19T10:10:20+08:00 ] 106.117.9.13 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.026954s] [吞吐率：37.10req/s] [内存消耗：3,768.59kb] [文件加载：132]
+[ error ] [0]数据表字段不存在:[0][/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Builder.php:115]
+---------------------------------------------------------------
+[ 2020-11-19T10:24:02+08:00 ] 106.117.9.13 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.026590s] [吞吐率：37.61req/s] [内存消耗：3,768.63kb] [文件加载：132]
+[ error ] [0]数据表字段不存在:[0][/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Builder.php:115]
+---------------------------------------------------------------
+[ 2020-11-19T10:24:48+08:00 ] 106.117.9.13 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.027613s] [吞吐率：36.21req/s] [内存消耗：3,768.63kb] [文件加载：132]
+[ error ] [0]数据表字段不存在:[status][/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Builder.php:115]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:04+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018317s] [吞吐率：54.59req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:05+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018145s] [吞吐率：55.11req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:06+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018006s] [吞吐率：55.54req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:06+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018647s] [吞吐率：53.63req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:06+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018523s] [吞吐率：53.99req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:06+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018004s] [吞吐率：55.54req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:07+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018713s] [吞吐率：53.44req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:07+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018833s] [吞吐率：53.10req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:07+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018724s] [吞吐率：53.41req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:07+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018665s] [吞吐率：53.58req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:08+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018625s] [吞吐率：53.69req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T14:19:12+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/verify
+[运行时间：0.018550s] [吞吐率：53.91req/s] [内存消耗：2,738.36kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T15:24:06+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.028971s] [吞吐率：34.52req/s] [内存消耗：3,687.75kb] [文件加载：129]
+[ error ] [0]数据表字段不存在:[0][/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Builder.php:115]
+---------------------------------------------------------------
+[ 2020-11-19T15:26:32+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.028903s] [吞吐率：34.60req/s] [内存消耗：3,687.78kb] [文件加载：129]
+[ error ] [0]数据表字段不存在:[0][/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Builder.php:115]
+---------------------------------------------------------------
+[ 2020-11-19T15:34:04+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.017839s] [吞吐率：56.06req/s] [内存消耗：2,738.62kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T15:42:29+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.018483s] [吞吐率：54.10req/s] [内存消耗：2,738.62kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T15:48:41+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.017833s] [吞吐率：56.08req/s] [内存消耗：2,739.43kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T16:05:41+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.017825s] [吞吐率：56.10req/s] [内存消耗：2,750.73kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T16:06:24+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.018682s] [吞吐率：53.53req/s] [内存消耗：2,750.73kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T16:07:14+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.019276s] [吞吐率：51.88req/s] [内存消耗：2,750.73kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T16:12:54+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.018891s] [吞吐率：52.94req/s] [内存消耗：2,749.91kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T16:14:02+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.018454s] [吞吐率：54.19req/s] [内存消耗：2,749.91kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T16:15:06+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.017943s] [吞吐率：55.73req/s] [内存消耗：2,749.91kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T16:17:08+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.018322s] [吞吐率：54.58req/s] [内存消耗：2,749.91kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T16:18:05+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.018117s] [吞吐率：55.20req/s] [内存消耗：2,750.63kb] [文件加载：119]
+[ error ] [0]variable type error：array[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Request.php:1162]
+---------------------------------------------------------------
+[ 2020-11-19T16:18:53+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.027577s] [吞吐率：36.26req/s] [内存消耗：3,699.59kb] [文件加载：129]
+[ error ] [0]数据表字段不存在:[0][/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Builder.php:115]
+---------------------------------------------------------------
+[ 2020-11-19T16:31:23+08:00 ] 106.117.21.147 POST bill.zhoujiasong.top/api/order/submitMission
+[运行时间：0.026584s] [吞吐率：37.62req/s] [内存消耗：3,699.70kb] [文件加载：129]
+[ error ] [0]数据表字段不存在:[0][/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Builder.php:115]

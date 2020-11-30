@@ -1,0 +1,84 @@
+---------------------------------------------------------------
+[ 2020-11-25T10:03:49+08:00 ] 106.117.23.101 GET bill.zhoujiasong.top/api/test/myMission?uid=4
+[运行时间：0.019509s] [吞吐率：51.26req/s] [内存消耗：2,724.30kb] [文件加载：119]
+[ error ] [0]致命错误: Class 'app\api\controller\OrderBrush' not found[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Test.php:232]
+---------------------------------------------------------------
+[ 2020-11-25T10:09:41+08:00 ] 106.117.23.101 GET bill.zhoujiasong.top/api/test/myMission?uid=4
+[运行时间：0.018720s] [吞吐率：53.42req/s] [内存消耗：2,726.24kb] [文件加载：120]
+[ error ] [8]Array to string conversion[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Test.php:224]
+---------------------------------------------------------------
+[ 2020-11-25T10:10:38+08:00 ] 106.117.23.101 GET bill.zhoujiasong.top/api/test/myMission?uid=4
+[运行时间：0.026905s] [吞吐率：37.17req/s] [内存消耗：3,783.10kb] [文件加载：132]
+[ error ] [2]Invalid argument supplied for foreach()[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Test.php:240]
+---------------------------------------------------------------
+[ 2020-11-25T11:34:03+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/missionDetail
+[运行时间：0.027546s] [吞吐率：36.30req/s] [内存消耗：3,845.22kb] [文件加载：134]
+[ error ] [0]method not exist:think\db\Query->brushs[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Query.php:103]
+---------------------------------------------------------------
+[ 2020-11-25T13:59:07+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/index/preview
+[运行时间：0.025239s] [吞吐率：39.62req/s] [内存消耗：3,775.71kb] [文件加载：131]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Index.php:71]
+---------------------------------------------------------------
+[ 2020-11-25T15:06:04+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/isget
+[运行时间：0.025050s] [吞吐率：39.92req/s] [内存消耗：3,698.56kb] [文件加载：129]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'order_id' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-25T15:06:05+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/isget
+[运行时间：0.025266s] [吞吐率：39.58req/s] [内存消耗：3,698.56kb] [文件加载：129]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'order_id' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-25T15:06:05+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/isget
+[运行时间：0.024913s] [吞吐率：40.14req/s] [内存消耗：3,698.56kb] [文件加载：129]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'order_id' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-25T15:06:06+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/isget
+[运行时间：0.025239s] [吞吐率：39.62req/s] [内存消耗：3,698.56kb] [文件加载：129]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'order_id' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-25T15:06:06+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/isget
+[运行时间：0.024852s] [吞吐率：40.24req/s] [内存消耗：3,698.56kb] [文件加载：129]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'order_id' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-25T15:58:49+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/plat_info
+[运行时间：0.025765s] [吞吐率：38.81req/s] [内存消耗：3,761.95kb] [文件加载：133]
+[ error ] [8]未定义数组下标: 0[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Collection.php:376]
+---------------------------------------------------------------
+[ 2020-11-25T15:59:17+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/plat_info
+[运行时间：0.035223s] [吞吐率：28.39req/s] [内存消耗：3,761.95kb] [文件加载：133]
+[ error ] [8]未定义数组下标: 0[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Collection.php:376]
+---------------------------------------------------------------
+[ 2020-11-25T16:00:40+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/plat_info
+[运行时间：0.027776s] [吞吐率：36.00req/s] [内存消耗：3,761.92kb] [文件加载：133]
+[ error ] [8]未定义数组索引: [/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Collection.php:376]
+---------------------------------------------------------------
+[ 2020-11-25T16:00:46+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/plat_info
+[运行时间：0.035239s] [吞吐率：28.38req/s] [内存消耗：3,761.92kb] [文件加载：133]
+[ error ] [8]未定义数组索引: [/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/Collection.php:376]
+---------------------------------------------------------------
+[ 2020-11-25T16:02:02+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/plat_info
+[运行时间：0.025837s] [吞吐率：38.70req/s] [内存消耗：3,762.10kb] [文件加载：133]
+[ error ] [8]Indirect modification of overloaded element of app\admin\model\Plat has no effect[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:183]
+---------------------------------------------------------------
+[ 2020-11-25T16:06:31+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/plat_info
+[运行时间：0.027706s] [吞吐率：36.09req/s] [内存消耗：3,762.10kb] [文件加载：133]
+[ error ] [8]Indirect modification of overloaded element of app\admin\model\Plat has no effect[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:183]
+---------------------------------------------------------------
+[ 2020-11-25T17:06:39+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/missionDetail
+[运行时间：0.029261s] [吞吐率：34.18req/s] [内存消耗：3,926.07kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'order.brush_id' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-25T17:14:53+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/missionDetail
+[运行时间：0.028519s] [吞吐率：35.06req/s] [内存消耗：3,921.69kb] [文件加载：137]
+[ error ] [8]未定义变量: uid[/www/wwwroot/bill.zhoujiasong.top/application/admin/model/Order.php:157]
+---------------------------------------------------------------
+[ 2020-11-25T17:15:09+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/missionDetail
+[运行时间：0.029269s] [吞吐率：34.17req/s] [内存消耗：3,921.69kb] [文件加载：137]
+[ error ] [8]未定义变量: uid[/www/wwwroot/bill.zhoujiasong.top/application/admin/model/Order.php:157]
+---------------------------------------------------------------
+[ 2020-11-25T18:17:38+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/myMission
+[运行时间：0.026693s] [吞吐率：37.46req/s] [内存消耗：3,843.88kb] [文件加载：135]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'order.brush.status' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-25T18:17:44+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/myMission
+[运行时间：0.027607s] [吞吐率：36.22req/s] [内存消耗：3,843.88kb] [文件加载：135]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'order.brush.status' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]

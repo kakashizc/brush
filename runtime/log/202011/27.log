@@ -1,0 +1,256 @@
+---------------------------------------------------------------
+[ 2020-11-27T09:40:43+08:00 ] 106.117.23.101 GET bill.zhoujiasong.top/api/test/missionTime?order_id=18
+[运行时间：0.024328s] [吞吐率：41.10req/s] [内存消耗：3,639.81kb] [文件加载：127]
+[ error ] [8]Undefined property: app\api\controller\Test::$_uid[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Test.php:51]
+---------------------------------------------------------------
+[ 2020-11-27T11:08:15+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/myMission
+[运行时间：0.025622s] [吞吐率：39.03req/s] [内存消耗：3,848.87kb] [文件加载：133]
+[ error ] [8]未定义变量: where1[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Order.php:316]
+---------------------------------------------------------------
+[ 2020-11-27T11:08:15+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/order/myMission
+[运行时间：0.025578s] [吞吐率：39.10req/s] [内存消耗：3,848.87kb] [文件加载：133]
+[ error ] [8]未定义变量: where1[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Order.php:316]
+---------------------------------------------------------------
+[ 2020-11-27T14:18:55+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024868s] [吞吐率：40.21req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:19:10+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024525s] [吞吐率：40.77req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:19:27+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024764s] [吞吐率：40.38req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:19:37+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.025514s] [吞吐率：39.19req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:20:14+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024501s] [吞吐率：40.81req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:20:22+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024659s] [吞吐率：40.55req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:20:47+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024458s] [吞吐率：40.89req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:21:09+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024536s] [吞吐率：40.76req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:21:20+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.025261s] [吞吐率：39.59req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:21:28+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024751s] [吞吐率：40.40req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:21:31+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.025513s] [吞吐率：39.20req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:21:44+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024646s] [吞吐率：40.57req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:22:00+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024544s] [吞吐率：40.74req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:22:46+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024583s] [吞吐率：40.68req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:23:09+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.025240s] [吞吐率：39.62req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:23:19+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.025327s] [吞吐率：39.48req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:23:26+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024665s] [吞吐率：40.54req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:23:35+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024567s] [吞吐率：40.71req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:23:46+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024490s] [吞吐率：40.83req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:24:01+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024699s] [吞吐率：40.49req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:24:12+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024470s] [吞吐率：40.87req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:24:30+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024606s] [吞吐率：40.64req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:24:39+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024305s] [吞吐率：41.14req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:24:58+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024027s] [吞吐率：41.62req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:25:19+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024833s] [吞吐率：40.27req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:25:32+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.023978s] [吞吐率：41.70req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:25:55+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024589s] [吞吐率：40.67req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:26:33+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024644s] [吞吐率：40.58req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:26:50+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024246s] [吞吐率：41.24req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:27:01+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024140s] [吞吐率：41.42req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:27:06+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024265s] [吞吐率：41.21req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:27:16+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024158s] [吞吐率：41.39req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:27:25+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024311s] [吞吐率：41.13req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:27:35+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.030388s] [吞吐率：32.91req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:27:45+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.041972s] [吞吐率：23.83req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:27:46+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.029747s] [吞吐率：33.62req/s] [内存消耗：4,316.55kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:28:06+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.031011s] [吞吐率：32.25req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:28:32+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.032470s] [吞吐率：30.80req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:28:40+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.040009s] [吞吐率：24.99req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:29:38+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024761s] [吞吐率：40.39req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:31:13+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.037885s] [吞吐率：26.40req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:31:49+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024674s] [吞吐率：40.53req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:32:46+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024594s] [吞吐率：40.66req/s] [内存消耗：3,708.38kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:33:55+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024428s] [吞吐率：40.94req/s] [内存消耗：3,711.59kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:34:08+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024183s] [吞吐率：41.35req/s] [内存消耗：3,711.59kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:34:10+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.024499s] [吞吐率：40.82req/s] [内存消耗：3,711.59kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:34:26+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.023772s] [吞吐率：42.07req/s] [内存消耗：3,711.59kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:34:27+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/myinfo
+[运行时间：0.023777s] [吞吐率：42.06req/s] [内存消耗：3,711.59kb] [文件加载：130]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:53]
+---------------------------------------------------------------
+[ 2020-11-27T14:40:24+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.031749s] [吞吐率：31.50req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:42:17+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/order_brush/index
+[运行时间：0.052541s] [吞吐率：19.03req/s] [内存消耗：4,447.46kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:42:17+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.056187s] [吞吐率：17.80req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:42:37+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/order_brush/index
+[运行时间：0.031714s] [吞吐率：31.53req/s] [内存消耗：4,447.46kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:42:37+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.038267s] [吞吐率：26.13req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:47:00+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.039747s] [吞吐率：25.16req/s] [内存消耗：4,310.98kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:47:10+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.029730s] [吞吐率：33.64req/s] [内存消耗：4,316.55kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:47:20+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.030177s] [吞吐率：33.14req/s] [内存消耗：4,316.55kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:47:27+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.029915s] [吞吐率：33.43req/s] [内存消耗：4,316.55kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T14:47:46+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/complain/index
+[运行时间：0.030591s] [吞吐率：32.69req/s] [内存消耗：4,316.55kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'where clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
+---------------------------------------------------------------
+[ 2020-11-27T15:48:44+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/indent
+[运行时间：0.026429s] [吞吐率：37.84req/s] [内存消耗：3,628.86kb] [文件加载：128]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:240]
+---------------------------------------------------------------
+[ 2020-11-27T15:49:20+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/api/brush/indent
+[运行时间：0.038823s] [吞吐率：25.76req/s] [内存消耗：3,631.95kb] [文件加载：128]
+[ error ] [8]Trying to get property 'id' of non-object[/www/wwwroot/bill.zhoujiasong.top/application/api/controller/Brush.php:240]
+---------------------------------------------------------------
+[ 2020-11-27T18:00:16+08:00 ] 106.117.23.101 POST bill.zhoujiasong.top/admin.php/order/index
+[运行时间：0.038687s] [吞吐率：25.85req/s] [内存消耗：4,383.91kb] [文件加载：138]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'order clause'[/www/wwwroot/bill.zhoujiasong.top/thinkphp/library/think/db/Connection.php:385]
