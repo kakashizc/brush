@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:72:"E:\billgit\brush\public/../application/admin\view\order_brush\index.html";i:1606729589;s:59:"E:\billgit\brush\application\admin\view\layout\default.html";i:1588765312;s:56:"E:\billgit\brush\application\admin\view\common\meta.html";i:1588765312;s:58:"E:\billgit\brush\application\admin\view\common\script.html";i:1588765312;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:66:"E:\billgit\brush\public/../application/admin\view\brush\index.html";i:1606729703;s:59:"E:\billgit\brush\application\admin\view\layout\default.html";i:1588765312;s:56:"E:\billgit\brush\application\admin\view\common\meta.html";i:1588765312;s:58:"E:\billgit\brush\application\admin\view\common\script.html";i:1588765312;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -70,7 +70,7 @@
                     <div id="toolbar" class="toolbar">
                         <a href="javascript:;" class="btn btn-primary btn-refresh" title="<?php echo __('Refresh'); ?>" ><i class="fa fa-refresh"></i> </a>
 
-                        <div class="dropdown btn-group <?php echo $auth->check('order_brush/multi')?'':'hide'; ?>">
+                        <div class="dropdown btn-group <?php echo $auth->check('brush/multi')?'':'hide'; ?>">
                             <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> <?php echo __('More'); ?></a>
                             <ul class="dropdown-menu text-left" role="menu">
                                 <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> <?php echo __('Set to normal'); ?></a></li>
@@ -81,8 +81,8 @@
                         
                     </div>
                     <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
-                           data-operate-edit="<?php echo $auth->check('order_brush/edit'); ?>" 
-                           data-operate-del="<?php echo $auth->check('order_brush/del'); ?>" 
+                           data-operate-edit="<?php echo $auth->check('brush/edit'); ?>" 
+                           data-operate-del="<?php echo $auth->check('brush/del'); ?>" 
                            width="100%">
                     </table>
                 </div>

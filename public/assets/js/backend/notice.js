@@ -9,7 +9,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     add_url: 'notice/add',
                     edit_url: 'notice/edit',
                     del_url: 'notice/del',
-                    multi_url: 'notice/multi',
                     table: 'notice',
                 }
             });

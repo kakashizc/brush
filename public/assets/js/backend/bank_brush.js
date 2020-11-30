@@ -6,10 +6,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             Table.api.init({
                 extend: {
                     index_url: 'bank_brush/index' + location.search,
-                    add_url: 'bank_brush/add',
                     edit_url: 'bank_brush/edit',
-                    del_url: 'bank_brush/del',
-                    multi_url: 'bank_brush/multi',
                     table: 'bank_brush',
                 }
             });

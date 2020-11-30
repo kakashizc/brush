@@ -7,9 +7,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 extend: {
                     index_url: 'feed/index' + location.search,
                     add_url: 'feed/add',
-                    edit_url: 'feed/edit',
                     del_url: 'feed/del',
-                    multi_url: 'feed/multi',
                     table: 'feed',
                 }
             });

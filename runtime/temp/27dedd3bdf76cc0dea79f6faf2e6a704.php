@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:72:"E:\billgit\brush\public/../application/admin\view\order_brush\index.html";i:1606729589;s:59:"E:\billgit\brush\application\admin\view\layout\default.html";i:1588765312;s:56:"E:\billgit\brush\application\admin\view\common\meta.html";i:1588765312;s:58:"E:\billgit\brush\application\admin\view\common\script.html";i:1588765312;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:64:"E:\billgit\brush\public/../application/admin\view\bro\index.html";i:1606729457;s:59:"E:\billgit\brush\application\admin\view\layout\default.html";i:1588765312;s:56:"E:\billgit\brush\application\admin\view\common\meta.html";i:1588765312;s:58:"E:\billgit\brush\application\admin\view\common\script.html";i:1588765312;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -51,17 +51,7 @@
                             <?php endif; ?>
                             <div class="content">
                                 <div class="panel panel-default panel-intro">
-    
-    <div class="panel-heading">
-        <?php echo build_heading(null,FALSE); ?>
-        <ul class="nav nav-tabs" data-field="status">
-            <li class="active"><a href="#t-all" data-value="" data-toggle="tab"><?php echo __('All'); ?></a></li>
-            <?php if(is_array($statusList) || $statusList instanceof \think\Collection || $statusList instanceof \think\Paginator): if( count($statusList)==0 ) : echo "" ;else: foreach($statusList as $key=>$vo): ?>
-            <li><a href="#t-<?php echo $key; ?>" data-value="<?php echo $key; ?>" data-toggle="tab"><?php echo $vo; ?></a></li>
-            <?php endforeach; endif; else: echo "" ;endif; ?>
-        </ul>
-    </div>
-
+    <?php echo build_heading(); ?>
 
     <div class="panel-body">
         <div id="myTabContent" class="tab-content">
@@ -70,7 +60,7 @@
                     <div id="toolbar" class="toolbar">
                         <a href="javascript:;" class="btn btn-primary btn-refresh" title="<?php echo __('Refresh'); ?>" ><i class="fa fa-refresh"></i> </a>
 
-                        <div class="dropdown btn-group <?php echo $auth->check('order_brush/multi')?'':'hide'; ?>">
+                        <div class="dropdown btn-group <?php echo $auth->check('bro/multi')?'':'hide'; ?>">
                             <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> <?php echo __('More'); ?></a>
                             <ul class="dropdown-menu text-left" role="menu">
                                 <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> <?php echo __('Set to normal'); ?></a></li>
@@ -81,8 +71,8 @@
                         
                     </div>
                     <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
-                           data-operate-edit="<?php echo $auth->check('order_brush/edit'); ?>" 
-                           data-operate-del="<?php echo $auth->check('order_brush/del'); ?>" 
+                           data-operate-edit="<?php echo $auth->check('bro/edit'); ?>" 
+                           data-operate-del="<?php echo $auth->check('bro/del'); ?>" 
                            width="100%">
                     </table>
                 </div>

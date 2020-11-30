@@ -6,10 +6,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             Table.api.init({
                 extend: {
                     index_url: 'plat_xy/index' + location.search,
-                    add_url: 'plat_xy/add',
                     edit_url: 'plat_xy/edit',
-                    del_url: 'plat_xy/del',
-                    multi_url: 'plat_xy/multi',
                     table: 'plat_xy',
                 }
             });
