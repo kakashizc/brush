@@ -32,8 +32,24 @@ class Tx extends Backend
      */
     public function pass()
     {
-
+        $id = $this->request->param('ids');
+        $res = $this->model->where('id',$id)->setField('status','1');
+        if ($res){
+            $this->success('已通过');
+        }else{
+            $this->error('失败');
+        }
     }
 
+    public function negative()
+    {
+        $id = $this->request->param('ids');
+        $res = $this->model->where('id',$id)->setField('status','2');
+        if ($res){
+            $this->success('已拒绝');
+        }else{
+            $this->error('失败');
+        }
+    }
 
 }
