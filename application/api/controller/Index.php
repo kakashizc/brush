@@ -18,6 +18,14 @@ class Index extends Api
 {
     protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
+    /*
+     * 版本信息
+     * */
+    public function version()
+    {
+        $this->success('1.0','','0');
+    }
+
     public function tered()
     {
         $rds = new \Redis();
