@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:67:"E:\billgit\brush\public/../application/admin\view\notice\index.html";i:1604989116;s:59:"E:\billgit\brush\application\admin\view\layout\default.html";i:1588765312;s:56:"E:\billgit\brush\application\admin\view\common\meta.html";i:1588765312;s:58:"E:\billgit\brush\application\admin\view\common\script.html";i:1588765312;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:67:"E:\billgit\brush\public/../application/admin\view\notice\index.html";i:1606730142;s:59:"E:\billgit\brush\application\admin\view\layout\default.html";i:1588765312;s:56:"E:\billgit\brush\application\admin\view\common\meta.html";i:1588765312;s:58:"E:\billgit\brush\application\admin\view\common\script.html";i:1588765312;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -62,7 +62,6 @@
                         <a href="javascript:;" class="btn btn-success btn-add <?php echo $auth->check('notice/add')?'':'hide'; ?>" title="<?php echo __('Add'); ?>" ><i class="fa fa-plus"></i> <?php echo __('Add'); ?></a>
                         <a href="javascript:;" class="btn btn-success btn-edit btn-disabled disabled <?php echo $auth->check('notice/edit')?'':'hide'; ?>" title="<?php echo __('Edit'); ?>" ><i class="fa fa-pencil"></i> <?php echo __('Edit'); ?></a>
                         <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled <?php echo $auth->check('notice/del')?'':'hide'; ?>" title="<?php echo __('Delete'); ?>" ><i class="fa fa-trash"></i> <?php echo __('Delete'); ?></a>
-                        <a href="javascript:;" class="btn btn-danger btn-import <?php echo $auth->check('notice/import')?'':'hide'; ?>" title="<?php echo __('Import'); ?>" id="btn-import-file" data-url="ajax/upload" data-mimetype="csv,xls,xlsx" data-multiple="false"><i class="fa fa-upload"></i> <?php echo __('Import'); ?></a>
 
                         <div class="dropdown btn-group <?php echo $auth->check('notice/multi')?'':'hide'; ?>">
                             <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> <?php echo __('More'); ?></a>
