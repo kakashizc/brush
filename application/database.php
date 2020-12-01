@@ -13,7 +13,7 @@
 use think\Env;
 
 return [
-    // 数据库类型
+    // 数据库类型1
     'type'            => Env::get('database.type', 'mysql'),
     // 服务器地址
     'hostname'        => Env::get('database.hostname', '127.0.0.1'),
