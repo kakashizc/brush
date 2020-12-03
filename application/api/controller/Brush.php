@@ -247,10 +247,10 @@ class Brush extends Api
         $up = [];
         $up['indent_name'] = $this->request->param('indent_name');
         $up['indent_no'] = $this->request->param('indent_no');
-        $up['front'] = $this->request->param('front');
-        $up['back'] = $this->request->param('back');
-        $up['keep'] = $this->request->param('keep');
-        $up['ali'] = $this->request->param('ali');
+        $up['front_image'] = $this->request->param('front');
+        $up['back_image'] = $this->request->param('back');
+        $up['keep_image'] = $this->request->param('keep');
+        $up['ali_image'] = $this->request->param('ali');
         $up['status'] = '1';
         $res = \app\admin\model\Brush::where('id',$this->_uid)->update($up);
         if ($res){
