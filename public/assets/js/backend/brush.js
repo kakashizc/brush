@@ -37,7 +37,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'qqwx', title: __('Qqwx')},
                         {field: 'indent_name', title: __('Indent_name')},
                         {field: 'indent_no', title: __('Indent_no')},
-                        {field: 'front', title: __('Front')},
+                        {field: 'Front', title: __('Front'), events: Table.api.events.image, formatter: Table.api.formatter.image},
                         {field: 'back', title: __('Back')},
                         {field: 'keep', title: __('Keep')},
                         {field: 'ali', title: __('Ali')},
