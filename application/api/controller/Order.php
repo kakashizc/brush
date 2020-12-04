@@ -205,22 +205,29 @@ class Order extends Api
         $insert['act_money'] = $this->request->param('act_money')??'';//实际付款金额
         
         //判断刷手提交的这个实际支付金额是否和订单设置的垫付金额一致,如果不一致 给申诉提示
-        if ($type == '1' && $insert['act_money']){
+        if ($type == '1'){
             $order = OrderModel::get($this->request->param('order_id'));//获取订单
             // $this->success('调试',$order,'1');
             $premoney = $order->goods_repPrice;//订单的垫付价格
             if ($insert['act_money'] != $premoney){
                 $comp = 1;
             }
+            //判断如果订单号后6位 和 此订单平台,刷手认证时候填写的最近一笔订单号不同 , 提示申诉
+            $orderm = OrderModel::get($this->request->param('order_id'));
+            if ($orderm->plat_id){
+                $plat_no = Db::name('brush_plat')
+                    ->where('brush_id',$this->_uid)
+                    ->where('plat_id',$orderm->plat_id)
+                    ->value('last_order_no');
+                //判断两个订单号的后六位
+                $input_ono = substr($insert['act_no'],-6);
+                $plat_ono = substr($plat_no,-6);
+                if ($input_ono != $plat_ono){
+                    $ono = 1;
+                }
+            }
         }
-        
-        // $insert['else'] = htmlspecialchars_decode($this->request->param('else'))??'无';//图片下面的选项,用 ,号拼接
-        // $else = json_decode($insert['else'],1);
-        // $estr = ''; 
-        // foreach ($else as $kk=>$vv){
-        //     $estr .= $vv['name'].':'.$vv['inpVal'].',';
-        // }
-        // $insert['else'] = rtrim($estr,',');
+
         $insert['order_no'] = $this->request->param('order_no');//主订单号
         if (!$this->request->param('order_id')){
             $order = OrderModel::get(['order_no'=>$insert['order_no']]);
@@ -263,9 +270,18 @@ class Order extends Api
                 $this->_redis->rename($str,$newstr);//改 delay 为 active 到时自动删除
                 $this->_redis->setex($newstr,1,'1');//设置时间为1,然后马上会被删除了
                 Db::commit();
-                if ( isset($comp) ){
-                    $brushid = ['order_brush_id' => $res->id];
-                    $this->success('提交成功,金额不同,提示申诉',$brushid,'2');
+                if ( isset($comp) || isset($ono) ){
+                    $return_data = [
+                        'order_brush_id' => $res->id
+                    ];
+                    if($comp){
+                        $msg = '提交成功,金额核对不同,提示申诉';
+                    }elseif($ono){
+                        $msg = '提交成功,订单号核对失败,提示申诉';
+                    }elseif($comp && $ono){
+                        $msg = '提交成功,订单号核对失败,金额核对不同,提示申诉';
+                    }
+                    $this->success($msg,$return_data,'2');
                 }else{
                     $this->success('提交成功,等待商家审核','','0');
                 }
