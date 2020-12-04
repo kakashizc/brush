@@ -208,7 +208,7 @@ class Order extends Api
         if ($type == '1'){
             $order = OrderModel::get($this->request->param('order_id'));//获取订单
             // $this->success('调试',$order,'1');
-            $premoney = $order->goods_repPrice;//订单的垫付价格
+            $premoney = (float)$order->goods_repPrice;//订单的垫付价格
             if ($insert['act_money'] != $premoney){
                 $comp = 1;
             }
