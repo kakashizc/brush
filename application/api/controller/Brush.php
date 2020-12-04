@@ -144,6 +144,8 @@ class Brush extends Api
         $data = [];
         $data['name'] = $this->request->param('name');
         $data['bankno'] = $this->request->param('bankno');
+        $data['ali_image'] = $this->request->param('ali_image');
+        $data['address'] = $this->request->param('address');
         $data['indent_name'] = $this->request->param('indent_name');
         $data['indent_no'] = $this->request->param('indent_no');
         $data['ctime'] = time();
@@ -212,6 +214,8 @@ class Brush extends Api
         $data['recive_address'] = $this->request->param('recive_address');
         $data['my_image'] = $this->request->param('my_image');
         $data['myinfo_image'] = $this->request->param('myinfo_image');
+        $data['last_order_no'] = $this->request->param('last_order_no');
+        $data['naughty_image'] = $this->request->param('naughty_image');
         $data['ctime'] = time();
         $res = BrushPlat::create($data);
         if ($res->id){
