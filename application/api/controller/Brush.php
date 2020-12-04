@@ -196,6 +196,11 @@ class Brush extends Api
      * */
     public function bind_plat()
     {
+        //查看以前有没有此用户申请此平台的记录,有就删掉
+        $old = BrushPlat::get(['plat_id'=>$this->request->param('plat_id'),'brush_id'=>$this->_uid]);
+        if ($old){
+            $old->delete();
+        }
         $data = array();
         $data['plat_id'] = $this->request->param('plat_id');//要绑定的平台id
         $data['brush_id'] = $this->_uid;//刷手id
