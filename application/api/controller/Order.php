@@ -274,11 +274,11 @@ class Order extends Api
                     $return_data = [
                         'order_brush_id' => $res->id
                     ];
-                    if($comp){
+                    if(isset($comp)){
                         $msg = '提交成功,金额核对不同,提示申诉';
-                    }elseif($ono){
+                    }elseif(isset($ono)){
                         $msg = '提交成功,订单号核对失败,提示申诉';
-                    }elseif($comp && $ono){
+                    }elseif( isset($comp) && isset($ono)){
                         $msg = '提交成功,订单号核对失败,金额核对不同,提示申诉';
                     }
                     $this->success($msg,$return_data,'2');
