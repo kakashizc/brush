@@ -202,7 +202,7 @@ class Order extends Api
         $insert['images'] = $this->request->param('images');//所有图片的地址,用逗号拼接
         $type = $this->request->param('type');//订单类型
         $insert['act_no'] = $this->request->param('act_no')??'';//实际订单号
-        $insert['act_money'] = $this->request->param('act_money')??'';//实际付款金额
+        $insert['act_money'] = (float)$this->request->param('act_money')??'';//实际付款金额
         
         //判断刷手提交的这个实际支付金额是否和订单设置的垫付金额一致,如果不一致 给申诉提示
         if ($type == '1'){
