@@ -98,12 +98,12 @@ class Brush extends Api
         //1,查出当月开始时间戳 结束时间戳 用whereTime()查询就行了
         $BeginDate=date('Y-m-01', strtotime(date("Y-m-d")));
         $last = date('Y-m-d', strtotime("$BeginDate +1 month"));
-        $monthcount = $ob->whereTime('ctime',[strtotime($BeginDate),strtotime($last)])->count();
+        $monthcount = OrderBrush::where('brush_id',$my->id)->whereTime('ctime',[strtotime($BeginDate),strtotime($last)])->count();
         //获取今日单数量
         //1,查找当天0点时间戳 和 24点时间戳
         $start = strtotime(date("Y-m-d"),time());
         $end = $start+3600*24;
-        $todaycount = $ob->whereTime('ctime',[$start,$end])->count();
+        $todaycount = OrderBrush::where('brush_id',$my->id)->whereTime('ctime',[$start,$end])->count();
         $my['today'] = $todaycount??0;
         $my['month'] = $monthcount??0;
         $this->success('成功',$my,'0');
