@@ -214,8 +214,8 @@ class Brush extends Api
         $data['recive_address'] = $this->request->param('recive_address');
         $data['my_image'] = $this->request->param('my_image');
         $data['myinfo_image'] = $this->request->param('myinfo_image');
-        $data['last_order_no'] = $this->request->param('last_order_no');
-        $data['naughty_image'] = $this->request->param('naughty_image');
+        $data['last_order_no'] = $this->request->param('naughty_image');
+        $data['naughty_image'] = $this->request->param('last_order_no');
         $data['ctime'] = time();
         $res = BrushPlat::create($data);
         if ($res->id){
