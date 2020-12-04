@@ -26,6 +26,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'bankno', title: __('Bankno')},
                         {field: 'indent_name', title: __('Indent_name')},
                         {field: 'indent_no', title: __('Indent_no')},
+                        {field: 'address', title: '开户行地址'},
+                        {field: 'ali_image', title: '支付宝收款码', events: Table.api.events.image, formatter: Table.api.formatter.image},
                         {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
                         {field: 'ctime', title: __('Ctime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'brush_id', title: __('Brush_id')},

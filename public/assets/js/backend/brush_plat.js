@@ -31,6 +31,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'recive_address', title: __('Recive_address')},
                         {field: 'my_image', title: __('My_image'), events: Table.api.events.image, formatter: Table.api.formatter.image},
                         {field: 'myinfo_image', title: __('Myinfo_image'), events: Table.api.events.image, formatter: Table.api.formatter.image},
+                        {field: 'last_order_no', title: '此平台最近一笔的订单号'},
+                        {field: 'naughty_image', title: '淘气值/京享值截图', events: Table.api.events.image, formatter: Table.api.formatter.image},
                         {field: 'ctime', title: __('Ctime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         
                         {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
