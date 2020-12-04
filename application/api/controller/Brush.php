@@ -88,7 +88,7 @@ class Brush extends Api
         $uid = $this->_uid;
         $my = BrushModel::get(function ($list )use($uid){
             $list->where('id',$uid)
-                ->field("id,name,indent_name as name,concat('$this->img',avatar) as avatar,gender,code,score,money");
+                ->field("id,indent_name as name,concat('$this->img',avatar) as avatar,gender,code,score,money");
         });
         //查找我的订单
         $ob = OrderBrush::where('brush_id',$my->id);
