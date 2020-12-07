@@ -311,7 +311,7 @@ class Brush extends Api
         Db::startTrans();
         try {
             $insert['bank_name'] = $bank['name'];
-            $insert['bank_no'] = $bank['bank_no'];
+            $insert['bank_no'] = $bank['bankno'];
             $insert['indent_name'] = $bank['indent_name'];
             $insert['indent_no'] = $bank['indent_no'];
             $res = Db::name('tx')->insertGetId($insert);
