@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use app\common\controller\Backend;
+use think\Db;
 
 /**
  * 
@@ -46,6 +47,9 @@ class Tx extends Backend
         $id = $this->request->param('ids');
         $res = $this->model->where('id',$id)->setField('status','2');
         if ($res){
+            //同时返回给商户金额
+            $money = $this->model->find($id);
+            Db::name('brush')->setInc('money',$money->money);
             $this->success('已拒绝');
         }else{
             $this->error('失败');
