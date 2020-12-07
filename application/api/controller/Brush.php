@@ -60,7 +60,7 @@ class Brush extends Api
         $brush = BrushModel::get($uid);
         if ($brush){
             $data['code'] = $brush->code;
-            $data['qrcode'] = 'http://bill.zhoujiasong.top/build.png';
+            $data['qrcode'] = 'http://sd.hbwuganfu.com/qrcode.png';
             $this->success('成功',$data,'0');
         }else{
             $this->success('不存在','','1');
