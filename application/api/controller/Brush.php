@@ -288,7 +288,10 @@ class Brush extends Api
     public function tixian()
     {
         $uid = $this->_uid;
-        $money = $this->request->param('money')??$this->success('金额不能为0','','1');//前端发来的金额
+        $money = $this->request->param('money');//前端发来的金额
+        if (!isset($money) || $money == 0){
+            $this->success('金额与实际账号金额不符,请联系管理员','','1');
+        }
         $last = BrushModel::get($uid);
         if ($last->money != $money){
             $this->success('金额与实际账号金额不符,请联系管理员','','1');
