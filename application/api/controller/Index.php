@@ -23,7 +23,7 @@ class Index extends Api
      * */
     public function version()
     {
-        $this->success('1.0.0','','0');
+        $this->success('1.0.2','','0');
     }
 
     public function tered()
