@@ -49,7 +49,7 @@ class Tx extends Backend
         if ($res){
             //同时返回给商户金额
             $money = $this->model->find($id);
-            Db::name('brush')->setInc('money',$money->money);
+            Db::name('brush')->where('id',$money->brush_id)->setInc('money',$money->money);
             $this->success('已拒绝');
         }else{
             $this->error('失败');
