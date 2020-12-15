@@ -162,6 +162,7 @@ class Order extends Backend
                 $params['shop_id'] = $this->auth->id;
                 $params['order_no'] =  date('YmdHis').'_'.$this->auth->id;
                 $params['ctime'] = time();
+                $this->addwater($params['goods_image']);//加水印
                 //计算单子的总金额(本金+佣金*单子数量),判断商家余额是否充足, 如果充足扣除发单商家的金额
                 $total = ($params['broker']+$params['goods_repPrice']) * $params['order_num'];
                 //查询当前商家余额
@@ -252,10 +253,10 @@ class Order extends Backend
         $fontType：具体的字体库，可带相对目录地址
         $markType：图片添加水印的方式，img代表以图片方式，text代表以文字方式添加水印
      * */
-    private function addwater($imgsrc,$markimg)
+    private function addwater($imgsrc)
     {
-        $imgsrc =ROOT_PATH.'/public'.$imgsrc;
-        $markimg= ROOT_PATH.'/public'.$markimg;
+        $imgsrc = ROOT_PATH.'/public/'.$imgsrc;
+        $markimg= ROOT_PATH.'/public/uploads/thumb/wat.png';
         $upload = new Upload();
         $res  = $upload->setWater($imgsrc,$markimg,'','',5,'','img');
     }
