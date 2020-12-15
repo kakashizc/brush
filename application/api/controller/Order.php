@@ -369,7 +369,7 @@ class Order extends Api
             $orderInfo = $order->getOrderDetail($orderId,$this->_uid);
             //var_dump($orderInfo);exit;
             //查找订单对应的平台,并且查找到刷手在平台绑定的账号
-            $account = BrushPlat::get(['brush_id'=>2,'plat_id'=>$orderInfo['plat']['id']]);
+            $account = BrushPlat::get(['brush_id'=>$this->_uid,'plat_id'=>$orderInfo['plat']['id']]);
             $orderInfo['account'] = $account->account;
             
             $ret = array();
