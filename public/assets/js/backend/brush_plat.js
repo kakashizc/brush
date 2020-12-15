@@ -43,10 +43,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'brush.mobile', title: __('Brush.mobile')},
                         {field: 'brush.indent_name', title: __('Brush.indent_name')},
                         {field: 'brush.indent_no', title: __('Brush.indent_no')},
-                        {field: 'brush.front', title: __('Brush.front')},
-                        {field: 'brush.back', title: __('Brush.back')},
-                        {field: 'brush.keep', title: __('Brush.keep')},
-                        {field: 'brush.ali', title: __('Brush.ali')},
+                        {field: 'brush.front_image', title: __('Brush.front'),events: Table.api.events.image, formatter: Table.api.formatter.image},
+                        {field: 'brush.back_image', title: __('Brush.back'),events: Table.api.events.image, formatter: Table.api.formatter.image},
+                        {field: 'brush.keep_image', title: __('Brush.keep'),events: Table.api.events.image, formatter: Table.api.formatter.image},
+                        {field: 'brush.ali_image', title: __('Brush.ali'),events: Table.api.events.image, formatter: Table.api.formatter.image},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
