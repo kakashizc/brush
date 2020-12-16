@@ -55,15 +55,29 @@ class Order extends Backend
             $this->error('提交失败','',$orderid);
         }
     }
+
+    /*
+       后台管理 输入佣金
+       商家发单,输入垫付金额,自动计算对应范围的佣金
+       比如商家输入的任务垫付金额2元, 后台管理审核通过,发布任务时候改成了1.8元,那么实际佣金金额就是1.8元 ,  0.2元的差价给了平台了
+       后台管理员可以自己设定 金额对应的佣金范围
+     */
+    public function do_publish()
+    {
+        $params = $this->request->param();
+        $id = $params['id'];
+        $act_bro = $params['act_bro'];
+        $this->publish($id,$act_bro);
+    }
+
     /*
      * 平台管理员审核通过并发布商家的刷单任务
      * 1,根据主订单的发单数量,生成对应数量的子item订单号
      * 2,用户点击接单,更新item订单的刷手id,
      * */
-    public function publish()
+    public function publish($id,$act_bro)
     {
-        //订单id
-        $id = $this->request->param('ids');
+        //主订单id ---- $id
         //获取主订单设置的刷单数量
         $order = $this->model->where('id',$id)->find();
         //循环生成子订单数量
@@ -78,21 +92,30 @@ class Order extends Backend
         }
         //开启事务
         $this->model->startTrans();
-
-        $res = Db::name('order_item')->insertAll($item);
-        if ($res){
-            //插入成功后修改主订单状态
-            $up = array(
-              'status' => 2,
-              'publish_time' => time()
-            );
-            $this->model->where('id',$id)->update($up);
-            $this->model->commit();
-            $this->success('任务发布成功');
-        }else{
+        try{
+            //更新订单的act_bro字段
+            $this->model->where('id',$id)->setField('act_bro',$act_bro);
+            $res = Db::name('order_item')->insertAll($item);
+            if ($res){
+                //插入成功后修改主订单状态
+                $up = array(
+                    'status' => 2,
+                    'publish_time' => time()
+                );
+                $this->model->where('id',$id)->update($up);
+                $this->model->commit();
+                $this->success('任务发布成功','order/index');
+            }else{
+                $this->model->rollback();
+                $this->error('发布失败');
+            }
+        }catch(Exception $exception){
             $this->model->rollback();
-            $this->error('发布失败');
+            $this->error($exception->getMessage());
+        }catch(PDOException $PDOException){
+            $this->error($PDOException->getMessage());
         }
+
     }
 
     /**

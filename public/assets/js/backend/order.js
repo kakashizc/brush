@@ -83,15 +83,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                                     name: 'detail',
                                     text: '确认发布',
                                     title: '发布任务',
-                                    classname: 'btn btn-xs btn-danger btn-ajax',
+                                    classname: 'btn btn-xs btn-warning test',
                                     icon: 'fa fa-address-book-o',
-                                    url: 'order/publish',
-                                    confirm:'确认发布此刷单任务?',
-                                    success: function (data, ret) {
-                                        Layer.alert(ret.msg);
-                                        $(".btn-refresh").trigger('click')
-                                        return false;
-                                    },
                                     visible: function (row) {
                                         if (row.isadmin == 1 && row.status == '1'){
                                             //返回true时按钮显示,返回false隐藏
@@ -131,6 +124,40 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
             // 为表格绑定事件
             Table.api.bindevent(table);
+            // 点击拒绝审核
+            $(document).on("click", ".test", function () {
+                var options = table.bootstrapTable('getSelections');
+                var ids = options[0].ids
+                return Layer.alert('请输入实际佣金', {
+                    content: Template("logintpl", {}),
+                    zIndex: 99,
+                    area: ['430px', '180px'],
+                    resize: false,
+                    title: '发布',
+                    btn: ['确定发布','取消'],
+                    yes: function (index, layero) {
+                        Fast.api.ajax({
+                            url: 'order/do_publish',
+                            // dataType: 'jsonp',
+                            data: {
+                                act_bro: $("#inputAccount", layero).val(),
+                                id: ids
+                            }
+                        }, function (data, ret) {
+                            Layer.alert(ret.msg);
+                            $(".btn-refresh").trigger('click')
+                        }, function (data, ret) {
+                            Layer.closeAll();
+                            Layer.alert(ret.msg);
+                            return false;
+                        });
+
+                    },
+                    btn2: function (index) {
+                        layer.close(index);
+                    }
+                });
+            });
         },
         add: function () {
             Controller.api.bindevent();
