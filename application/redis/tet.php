@@ -24,7 +24,7 @@ $redis->psubscribe(array('__keyevent@0__:expired'), function ($redis, $pattern, 
             
             try{
                 $db = new PDO('mysql:host=localhost;dbname=bill', 'root', 'e2c87cd122d2d53c');
-                $res = $db->query("update `fa_order_item` set `brush_id`=0 where id=$arr[0] and brush_id=$arr[1]");
+                $res = $db->query("update `fa_order_item` set `brush_id`=0,`status`='1' where id=$arr[0]");
                 if ($res){
                     echo '订单已被回收,刷手id'.$arr[1].'-----order_item id = '.$arr[0];
                     
