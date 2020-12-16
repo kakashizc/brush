@@ -123,7 +123,7 @@ class Order extends Api
     {
         $uid = $this->_uid;
         $item_order = OrderItem::all(function ($list)use($uid){
-           $list->where('status','1')->whereOr('status','2')->where('brush_id',$uid);
+           $list->where("status = '1' or status = '2'")->where('brush_id',$uid);
         });
         if (sizeof($item_order) > 0){
             $order = new OrderModel();
