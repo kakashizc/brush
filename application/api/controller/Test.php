@@ -28,8 +28,32 @@ class Test extends Api
     public function _initialize()
     {
         parent::_initialize();
-        $this->_redis = new \Redis();
-        $this->_redis->connect('127.0.0.1','6379');
+//        $this->_redis = new \Redis();
+//        $this->_redis->connect('127.0.0.1','6379');
+    }
+
+    /*
+     * 大厅->点击接单->随机获取几个符合刷手条件的订单展示出来
+     * */
+    public function rand_order()
+    {
+        $uid = input('uid');
+        //1,查找出此刷手 15天内接过单的店铺id, 查找订单的时候 加上此限制条件
+        $now = time();//当前时间戳
+        $last_time = $now-3600*24*15;//半个月之前的时间戳
+        $ret = [];
+        $shopids = OrderBrush::select(function ($list) use ($uid,$last_time){
+            $list->where(['brush_id'=>$uid])
+                ->where('ctime','>',$last_time)
+                ->group('admin_id')
+                ->field('admin_id');
+        });
+        foreach($shopids as $k=>$v){
+            //ret 这个数组中的店铺id  是最近15天之内接的单子店铺, 这些店铺的订单 接口中不返回
+            $ret[$k] = $v->admin_id;
+        }
+        //2, 根据上面的条件 , 随机查找几个订单推送给刷手
+
     }
     
     public function abc()

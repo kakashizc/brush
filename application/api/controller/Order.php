@@ -19,6 +19,8 @@ use app\admin\model\Order as OrderModel;
 use think\Db;
 use app\admin\model\Comp;
 use app\admin\model\Complain;
+use think\Request;
+
 /*
  * 步骤:
  * 1,商家后台添加主订单 -> 2,商家提交审核 -> 3,平台审核发布,根据主订单的任务数量生成对应数量的子订单
@@ -501,5 +503,46 @@ class Order extends Api
         }
     }
 
-    
+    /*
+     * 大厅->点击接单->随机获取几个符合刷手条件的订单展示出来
+     * */
+    public function rand_order()
+    {
+        $uid = $this->_uid;
+        //1,查找出此刷手 15天内接过单的店铺id, 查找订单的时候 加上此限制条件
+        $now = time();//当前时间戳
+        $last_time = $now-3600*24*15;//半个月之前的时间戳
+        $ret = [];
+        $shopids = OrderBrush::select(function ($list) use ($uid,$last_time){
+            $list->where(['brush_id'=>$uid])
+                ->where('ctime','>',$last_time)
+                ->group('admin_id')
+                ->field('admin_id');
+        });
+        foreach($shopids as $k=>$v){
+            //ret 这个数组中的店铺id  是最近15天之内接的单子店铺, 这些店铺的订单 接口中不返回
+            $ret[$k] = $v->admin_id;
+        }
+        $plat_id = mt_rand(1,2);
+        $type = '1';//订单类型 垫付
+        //查询对应plat_id下的已审核发布的订单
+        $orders = \app\admin\model\Order::all(function($query)use($type,$plat_id,$ret){
+            $query->where(['status'=>'2','type'=>$type,'plat_id'=>$plat_id])
+                ->whereNotIn('shop_id',$ret)
+                ->field("id,order_no,act_bro as broker,FROM_UNIXTIME(publish_time,'%Y-%m-%d %H:%i:%s') as ptime,goods_repPrice")
+                ->page(1,5);
+        })->each(function($item) use($plat_id){
+            $plat = Plat::where('id',$plat_id)->find();
+            $item->img = IMG.$plat['image'];
+            //查询此任务剩余单量
+            $last_num = OrderItem::where(['order_id'=>$item['id'],'brush_id'=>0])->count();
+            $item->last_num = $last_num;
+        })->toArray();
+        if ( sizeof($orders) > 0 ){
+            $this->success('成功',$orders,'0');
+        }else{
+            $this->success('无订单',$orders,'1');
+        }
+    }
+
 }
