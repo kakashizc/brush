@@ -79,11 +79,11 @@ class OrderBrush extends Backend
                     ->limit($offset, $limit)
                     ->select();
 
-            foreach ($list as $row) {
+            foreach ($list as $k=>$row) {
                 if ($group_id == 1){
                     $row->isadmin = 1;
                 }
-                $row->visible(['id','order_no','shop_name','status','ctime','broker','stime','ptime','confirmtime','gettime','donetime','back','images','else','type']);
+                $row->visible(['id','order_no','isadmin','shop_name','status','ctime','broker','stime','ptime','confirmtime','gettime','donetime','back','images','else','type','act_account']);
                 $row->visible(['admin']);
 				$row->getRelation('admin')->visible(['username','nickname']);
 				$row->visible(['brush']);

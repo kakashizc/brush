@@ -28,6 +28,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'shop_id', title: __('Shop_id')},
                         {field: 'goods_ame', title: __('Goods_ame')},
                         {field: 'keywords', title: '关键字'},
+                        {field: 'act_sname', title: '店铺名'},
                         {field: 'goods_price', title: __('Goods_price'), operate:'BETWEEN'},
                         {field: 'goods_repPrice', title: __('Goods_repprice'), operate:'BETWEEN'},
                         {field: 'goods_sku', title: __('Goods_sku')},

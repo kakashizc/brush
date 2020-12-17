@@ -130,7 +130,8 @@ class Order extends Model
         $data = collection($this->with(['admin','plat','json'])->where('order.id',$orderId)->select())->toArray();
         //对数据进行拼装
         $info = array_shift($data); //取出二维数组第一个元素,同时删除原二维数组第一个元素
-        $info['shop']['nickname'] = mb_substr( $info['admin']['nickname'], 0, 1 )."*****";
+//        $info['shop']['nickname'] = mb_substr( $info['admin']['nickname'], 0, 1 )."*****";
+        $info['shop']['nickname'] = $info['act_sname'];
         unset($info['admin']);
         unset($info['goods_ame']);
         unset($info['goods_link']);
@@ -141,7 +142,7 @@ class Order extends Model
         foreach ($info['json'] as $k=>$v){
             if(strpos($k,'_json') !== false){
                 $info['json'][$k] = json_decode($v,1);
-                
+
                 if ( $k == 'answer_json'){//如果是问答选项, 删除对应的value
                     //删除key对应的value
                     foreach ($info['json'][$k] as $i=>$j){
@@ -160,7 +161,8 @@ class Order extends Model
         }])->where('order.id',$orderId)->select())->toArray();
         //对数据进行拼装
         $info = array_shift($data); //取出二维数组第一个元素,同时删除原二维数组第一个元素
-        $info['shop']['nickname'] = mb_substr( $info['admin']['nickname'], 0, 1 )."*****";
+//        $info['shop']['nickname'] = mb_substr( $info['admin']['nickname'], 0, 1 )."*****";
+        $info['shop']['nickname'] = $info['act_sname'];
         unset($info['admin']);
         unset($info['goods_link']);
         unset($info['broker']);

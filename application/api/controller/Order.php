@@ -13,6 +13,7 @@ use app\admin\model\Admin;
 use app\admin\model\BrushPlat;
 use app\admin\model\OrderBrush;
 use app\admin\model\OrderItem;
+use app\admin\model\Plat;
 use app\common\controller\Api;
 use app\admin\model\Order as OrderModel;
 use think\Db;
@@ -243,10 +244,20 @@ class Order extends Api
         if (!$isRedis){
             $this->success('订单已超时收回','','1');
         }
+        //查找刷手平台账号
+        $bp = Db::name('brush_plat')
+            ->where('brush_id',$this->_uid)
+            ->where('plat_id',$orderm->plat_id)
+            ->find();
+        //拼接一下
+        $plat_name = Plat::get($orderm->plat_id);
+        $account = $bp['account'].'('.$plat_name->name.')';//刷手账号 拼接 平台名字
         $insert['order_item_no'] = $item['item'];//子订单号id,根据此id查询子订单编号
         $insert['admin_id'] = $this->request->param('shop_id');
         $insert['shop_name'] = Admin::where('id',$this->request->param('shop_id'))->value('nickname');//商户名称或店铺昵称
+        $insert['act_sname'] = OrderModel::where('order_no',$this->request->param('order_no'))->value('act_sname');//商家发单时, 填写的真实平台店铺的名字
         $insert['ctime'] = time();
+        $insert['act_account'] = $account;
         $insert['broker'] = $this->request->param('broker');
         $insert['brush_id'] = $this->_uid;
         $insert['plat_id'] = $this->request->param('plat_id');

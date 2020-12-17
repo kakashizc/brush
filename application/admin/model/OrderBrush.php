@@ -36,8 +36,6 @@ class OrderBrush extends Model
         'type_text'
     ];
     
-
-    
     public function getStatusList()
     {
         return ['1' => __('Status 1'), '2' => __('Status 2'), '3' => __('Status 3'), '4' => __('Status 4'), '5' => __('Status 5')];
