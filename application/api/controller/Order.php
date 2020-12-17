@@ -62,6 +62,8 @@ class Order extends Api
     public function doMission()
     {
         $orderId = $this->request->param('order_id');
+        $canbe = $this->canbe($orderId);
+        if ($canbe == false) $this->success('近期不能接此商户的订单','','1');
         //查看是否已接此单
         $is = OrderItem::where(['order_id'=>$orderId,'brush_id'=>$this->_uid])->find();
          if ( $is ){
@@ -117,7 +119,24 @@ class Order extends Api
         Db::rollback();
         $this->success('任务不存在或任务已抢完','','1');
     }
-    
+
+    /*
+     * 是否可以接同一个商户订单
+     * 同店铺不同商品半个月一次，同店铺同商品一个月一次
+     * */
+    private function canbe($order_id)
+    {
+        $shop_id = Db::name('order')->where('id',$order_id)->value('shop_id');
+        $last_time = OrderBrush::where(['admin_id'=>$shop_id,'brush_id'=>$this->_uid])
+            ->order('ctime desc')
+            ->value('ctime');
+        $now = time();
+        if ($now - 3600*24*30 > $last_time ){//当前时间-15天 = 15天之前的时间 > 最后一笔订单的时间 说明过了15天了,可以接单
+            return true;
+        }else{
+            return false;
+        }
+    }
     /*
      * 代操作的订单
      *
