@@ -62,8 +62,6 @@ class Order extends Api
     public function doMission()
     {
         $orderId = $this->request->param('order_id');
-        $canbe = $this->canbe($orderId);
-        if ($canbe == false) $this->success('近期不能接此商户的订单','','1');
         //查看是否已接此单
         $is = OrderItem::where(['order_id'=>$orderId,'brush_id'=>$this->_uid])->find();
          if ( $is ){
@@ -84,6 +82,8 @@ class Order extends Api
             //如果查询到了, 说明已接此单, 不能再接了
             $this->success('您已接此单,请操作',$orderInfo,'0');
         }
+        $canbe = $this->canbe($orderId);
+        if ($canbe == false) $this->success('近期不能接此商户的订单','','1');
         Db::startTrans();
         $item = OrderItem::where(['order_id'=>$orderId,'brush_id'=>0])->order('id asc')->find();
         if ( $item ){
