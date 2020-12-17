@@ -25,6 +25,16 @@ class Index extends Api
     {
         $this->success('1.0.2','','0');
     }
+    /*
+     * 获取示例图
+     * */
+    public function getshow()
+    {
+        $res = Db::name('ashow')
+            ->field("concat('$this->img',pay_image) as pay_image,concat('$this->img',get_image) as get_image,concat('$this->img',chat_image) as chat_image")
+            ->find();
+        $this->success('获取成功',$res,'0');
+    }
 
     public function tered()
     {
