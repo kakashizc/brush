@@ -134,7 +134,9 @@ class Order extends Model
         unset($info['admin']);
         unset($info['goods_ame']);
         unset($info['goods_link']);
+        unset($info['broker']);
         $info['goods_image'] = IMG.$info['goods_image'];
+        $info['broker'] = $info['act_bro'];
         $info['plat']['image'] = IMG.$info['plat']['image'];
         foreach ($info['json'] as $k=>$v){
             if(strpos($k,'_json') !== false){
@@ -161,6 +163,8 @@ class Order extends Model
         $info['shop']['nickname'] = mb_substr( $info['admin']['nickname'], 0, 1 )."*****";
         unset($info['admin']);
         unset($info['goods_link']);
+        unset($info['broker']);
+        $info['broker'] = $info['act_bro'];
         $info['goods_image'] = IMG.$info['goods_image'];
         $info['plat']['image'] = IMG.$info['plat']['image'];
         //处理提交任务时的图片

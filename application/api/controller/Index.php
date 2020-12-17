@@ -60,7 +60,7 @@ class Index extends Api
         $type = $this->request->param('type');//订单类型 垫付,浏览
         //查询对应plat_id下的已审核发布的订单
         $orders = Order::all(function($query)use($type,$plat_id){
-            $query->where(['status'=>'2','type'=>$type,'plat_id'=>$plat_id])->field("id,order_no,broker,FROM_UNIXTIME(publish_time,'%Y-%m-%d %H:%i:%s') as ptime,goods_repPrice");
+            $query->where(['status'=>'2','type'=>$type,'plat_id'=>$plat_id])->field("id,order_no,act_bro as broker,FROM_UNIXTIME(publish_time,'%Y-%m-%d %H:%i:%s') as ptime,goods_repPrice");
         })->each(function($item) use($plat_id){
             $plat = Plat::where('id',$plat_id)->find();
             $item->img = IMG.$plat['image'];
