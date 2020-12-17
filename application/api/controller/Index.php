@@ -130,7 +130,7 @@ class Index extends Api
             "goods_num" => $order->goods_num,
             "goods_image" => IMG.$order->goods_image,
             "shop_desc" => $order->shop_desc,
-            "shopname" => $order->admin->nickname,
+            "shopname" => $order->act_sname,
         ];
         $this->success('成功',$data,'0');
     }
