@@ -530,7 +530,7 @@ class Order extends Api
             $query->where(['status'=>'2','type'=>$type,'plat_id'=>$plat_id])
                 ->whereNotIn('shop_id',$ret)
                 ->field("id,order_no,act_bro as broker,FROM_UNIXTIME(publish_time,'%Y-%m-%d %H:%i:%s') as ptime,goods_repPrice")
-                ->page(1,5);
+                ->limit(5);
         })->each(function($item) use($plat_id){
             $plat = Plat::where('id',$plat_id)->find();
             $item->img = IMG.$plat['image'];
