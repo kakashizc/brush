@@ -30,9 +30,35 @@ class Index extends Api
      * */
     public function getshow()
     {
+        $str = input('str');
+        if ($str == ''){
+            $this->success('参数为空','','1');
+        }
+        $arr = explode(',',$str);
+        $list = [];
+        foreach ($arr as $k=>$v){
+            switch ($v) {
+                case '支付截图':
+                    $list[] = 'pay_image';
+                    break;
+                case '收货截图':
+                    $list[] = 'get_image';
+                    break;
+                case '假聊截图':
+                    $list[] = 'chat_image';
+                    break;
+                default:
+                    break;
+            }
+        }
         $res = Db::name('ashow')
             ->field("concat('$this->img',pay_image) as pay_image,concat('$this->img',get_image) as get_image,concat('$this->img',chat_image) as chat_image")
             ->find();
+        foreach ($res  as $k=>$v){
+            if (!in_array($k,$list,'')){
+                unset($res[$k]);
+            }
+        }
         $this->success('获取成功',$res,'0');
     }
 
