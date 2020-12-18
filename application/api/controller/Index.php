@@ -23,7 +23,8 @@ class Index extends Api
      * */
     public function version()
     {
-        $this->success('1.0.2','','0');
+        $add = ['add'=>'http://abc.zhoujiasong.top/build.apk'];
+        $this->success('1.0.2',$add,'0');
     }
     /*
      * 获取示例图
