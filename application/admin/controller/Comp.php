@@ -49,15 +49,24 @@ class Comp extends Backend
                 return $this->selectpage();
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            //如果不是总管理员,那么只获取自己商户的订单
+            $where1 = "";
+            $admin_id = $this->auth->id;
+            $group_id = $this->auth->getRoleid($admin_id)??'';//获取当前角色的管理组id
+            if ($admin_id != 1){
+                $where1 = ['comp.admin_id'=>$admin_id];
+            }
             $total = $this->model
                     ->with(['admin','brush','orderbrush','complain'])
                     ->where($where)
+                ->where($where1)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
                     ->with(['admin','brush','orderbrush','complain'])
                     ->where($where)
+                ->where($where1)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();

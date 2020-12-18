@@ -61,7 +61,7 @@ class OrderBrush extends Backend
             $admin_id = $this->auth->id;
             $group_id = $this->auth->getRoleid($admin_id)??'';//获取当前角色的管理组id
             if ($admin_id != 1){
-                $where1 = "admin_id=$admin_id";
+                $where1 = ['admin_id'=>$admin_id];
             }
 
             $total = $this->model
