@@ -38,6 +38,11 @@ class SocketIO
         }
         if($port)
         {
+            $opts['ssl'] = array(
+                'local_cert'  => '/www/server/panel/vhost/cert/sd.hbwuganfu.com/fullchain.pem',  //您的证书所存放的位置
+                'local_pk'    => '/www/server/panel/vhost/cert/sd.hbwuganfu.com/privkey.pem',
+                'verify_peer' => false,
+            );
             $worker = new Worker('SocketIO://0.0.0.0:'.$port, $opts);
             $worker->name = 'PHPSocketIO';
 
