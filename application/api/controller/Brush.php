@@ -363,6 +363,9 @@ class Brush extends Api
         //2,获取佣金记录
         $getrecord = Db::name('feed')->where('brush_id',$uid)->field("money,status,FROM_UNIXTIME(ctime,'%Y-%m-%d %H:%i:%s') as ctime")->select()->toArray();
         $ret['get'] = $getrecord;
+        //3,管理员操作余额记录
+        $adrecord = Db::name('feed_brush')->field("money,status,FROM_UNIXTIME(ctime,'%Y-%m-%d %H:%i:%s') as ctime")->where('brush_id',$uid)->select()->toArray();
+        $ret['admin'] = $adrecord;
         $this->success('成功',$ret,'0');
     }
     
