@@ -43,7 +43,42 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'ali_image', title: __('Ali'), events: Table.api.events.image, formatter: Table.api.formatter.image},
                         {field: 'status', title: __('Status'), searchList: {"0":"未提交实名认证","1":__('Status 1'),"2":__('Status 2'),"3":__('Status 3')}, formatter: Table.api.formatter.status},
                         {field: 'remarks', title: '备注'},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'operate', title: __('Operate'),
+                            buttons:[
+                                {
+                                    name: 'detail',
+                                    text: '增加余额',
+                                    title: '增加余额',
+                                    classname: 'btn btn-xs btn-success btn-dialog',
+                                    icon: 'fa fa-address-book-o',
+                                    url: 'brush/inc',
+                                    visible: function (row) {
+                                        if ( row.isadmin == 1 ){//如果不是已撤单状态,显示撤单按钮
+                                            //返回true时按钮显示,返回false隐藏
+                                            return true;
+                                        }else{
+                                            return false;
+                                        }
+                                    }
+                                },
+                                {
+                                    name: 'detail',
+                                    text: '减少余额',
+                                    title: '减少余额',
+                                    classname: 'btn btn-xs btn-warning btn-dialog',
+                                    icon: 'fa fa-address-book-o',
+                                    url: 'brush/dec',
+                                    visible: function (row) {
+                                        if ( row.isadmin == 1 ){//如果不是已撤单状态,显示撤单按钮
+                                            //返回true时按钮显示,返回false隐藏
+                                            return true;
+                                        }else{
+                                            return false;
+                                        }
+                                    }
+                                },
+                            ],
+                            table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
             });
