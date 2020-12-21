@@ -53,8 +53,8 @@
     </body>
 </html>
 <script>
-    var a =  JSON.parse(window.localStorage.getItem('lastlogin'))
-    if ( a.id == 1 ){
+    // var a =  JSON.parse(window.localStorage.getItem('lastlogin'))
+    // if ( a.id == 1 ){
         // 连接服务端，workerman.net:2120换成实际部署web-msg-sender服务的域名或者ip
         var socket = io('https://sd.hbwuganfu.com:2120'); //http://www.tp5_test.com换成自己的域名或者ip
         // uid可以是自己网站的用户id，以便针对uid推送以及统计在线人数，这个ID可以随便写
@@ -84,5 +84,5 @@
         socket.on('update_online_count', function(online_stat){
             console.log(online_stat);
         });
-    }
+    // }
 </script>
