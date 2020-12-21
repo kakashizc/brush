@@ -6,7 +6,7 @@ use app\common\controller\Backend;
 use think\Db;
 use think\exception\PDOException;
 use think\exception\ValidateException;
-
+use app\common\controller\sendMsg;
 /**
  * 商户申请提现
  *
@@ -113,6 +113,9 @@ class Reback extends Backend
                         $this->model->validateFailException(true)->validate($validate);
                     }
                     $result = $this->model->allowField(true)->save($params);
+                    //给管理员后台发送一个订单提醒
+                    $send = new sendMsg();
+                    $send->send('您有新的提现申请,请及时查看!');
                     Db::commit();
                 } catch (ValidateException $e) {
                     Db::rollback();

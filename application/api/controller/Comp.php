@@ -13,6 +13,7 @@ use app\common\controller\Api;
 use think\Db;
 use app\admin\model\Comp as Comps;
 use app\admin\model\Complain;
+use app\common\controller\sendMsg;
 /*
  * 申诉订单类
  * */
@@ -53,6 +54,9 @@ class Comp extends Api
         if ($res){
             $orderbrush->status = '4';
             $orderbrush->save();
+            //给管理员后台发送一个订单提醒
+            $send = new sendMsg();
+            $send->send('您有新的申诉订单,请及时查看!');
             $this->success('提交成功,等待审核','','0');
         }else{
             $this->success('提交失败','','1');
