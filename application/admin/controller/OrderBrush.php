@@ -136,15 +136,23 @@ class OrderBrush extends Backend
             }
             //2,走到这里, 订单类型肯定是垫付,返给刷手本金
             $base = Order::get($border->order_id);//查询此订单的垫付价格
-            Brush::where(['id'=>$border->brush_id])->setInc('money',$base->goods_repPrice);
-            Brush::where(['id'=>$border->brush_id])->setInc('total',$base->goods_repPrice);//给刷手总额增加
+            //返本金机制: 如果单子本金是100元, 刷手提交任务是 90元(小于单子金额), 那么返本金是90
+            //如果刷手提交的金额大于100 , 那么返100
+            $moy = 0;
+            if ($border->act_money >= $base->goods_repPrice){
+                $moy = $base->goods_repPrice;
+            }else{
+                $moy = $border->act_money;
+            }
+            Brush::where(['id'=>$border->brush_id])->setInc('money',$moy);
+            Brush::where(['id'=>$border->brush_id])->setInc('total',$moy);//给刷手总额增加
             $this->model->where(['id'=>$oid])->setField('confirmtime',time());//更新 商家确认时间字段
             //3,插入一条返本金记录
             $data = [
                 'brush_id' => $border->brush_id,
                 'order_id' => $border->order_id,
                 'admin_id' => $border->admin_id,
-                'money' => $base->goods_repPrice,
+                'money' => $moy,
                 'status' => '1',
                 'ctime' => time(),
             ];
