@@ -96,7 +96,7 @@ class Brush extends Backend
             $b = Db::name('feed_brush')->insert($data);
             if ($a && $b){
                 Db::commit();
-                $this->success('成功,请刷新页面查看');
+                $this->success('成功,请刷新页面查看!');
             }
         }catch(Exception $exception){
             Db::rollback();
@@ -129,7 +129,7 @@ class Brush extends Backend
             $b = Db::name('feed_brush')->insert($data);
             if ($a && $b){
                 Db::commit();
-                $this->success('成功,请刷新页面查看');
+                $this->success('成功,请刷新页面查看!');
             }
         }catch(Exception $exception){
             Db::rollback();
