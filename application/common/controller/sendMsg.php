@@ -19,7 +19,7 @@ class sendMsg
         // 指明给谁推送，为空表示向所有在线用户推送
         $to_uid = "";
         // 推送的url地址，使用自己的服务器地址
-        $push_api_url = "http://bill.com:2121/";
+        $push_api_url = "http://sd.hbwuganfu.com:2121/";
         $post_data = array(
             "type" => "publish",
             "content" => "$msg",
