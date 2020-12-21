@@ -56,7 +56,7 @@
     var a =  JSON.parse(window.localStorage.getItem('lastlogin'))
     if ( a.id == 1 ){
         // 连接服务端，workerman.net:2120换成实际部署web-msg-sender服务的域名或者ip
-        var socket = io('https://sd.hbwuganfu.com:2120'); //http://www.tp5_test.com换成自己的域名或者ip
+        var socket = io('123.56.45.191:2120'); //http://www.tp5_test.com换成自己的域名或者ip
         // uid可以是自己网站的用户id，以便针对uid推送以及统计在线人数，这个ID可以随便写
         uid = 1557062581000;
         // socket连接后以uid登录
