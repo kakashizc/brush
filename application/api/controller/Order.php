@@ -308,12 +308,15 @@ class Order extends Api
                     ];
                     if(isset($comp)){
                         $msg = '提交成功,金额核对不同,提示申诉';
+                        $code = '2';
                     }elseif(isset($ono)){
-                        $msg = '提交成功,订单号核对失败,提示申诉';
+                        $msg = '提交失败,订单号核对失败,提示申诉';
+                        $code = '3';
                     }elseif( isset($comp) && isset($ono)){
-                        $msg = '提交成功,订单号核对失败,金额核对不同,提示申诉';
+                        $msg = '提交失败,订单号核对失败,金额核对不同,提示申诉';
+                        $code = '4';
                     }
-                    $this->success($msg,$return_data,'2');
+                    $this->success($msg,$return_data,$code);
                 }else{
                     $this->success('提交成功,等待商家审核','','0');
                 }
