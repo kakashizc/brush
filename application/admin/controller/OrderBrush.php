@@ -118,10 +118,17 @@ class OrderBrush extends Backend
     /*
      * 返回给刷手本金
      * */
-    public function feed_base()
+    public function feed_base($mulid = '')
     {
-        $oid = $this->request->param('ids');
+        if ($mulid){
+            $oid = $mulid;
+        }else{
+            $oid = $this->request->param('ids');
+        }
         $border = $this->model->where('id',$oid)->find();
+        if ( $mulid && ($border['back'] == '2' || $border['back'] == '4')){
+            return false;//如果是批量返本金 并且 订单状态为已返本金,直接返回
+        }
         $this->model->startTrans();
         try{
             //1,修改刷手订单表状态
@@ -158,7 +165,12 @@ class OrderBrush extends Backend
             ];
             Feed::create($data);
             $this->model->commit();
-            $this->success('成功');
+            if ($mulid){
+                return true;
+            }else{
+                $this->success('成功');
+            }
+
         } catch (PDOException $PDOException){
             $this->model->rollback();
             $this->error($PDOException->getMessage());
@@ -171,10 +183,17 @@ class OrderBrush extends Backend
     /*
      * 返回给刷手佣金
      * */
-    public function feed_bro()
+    public function feed_bro($mulid = '')
     {
-        $oid = $this->request->param('ids');
+        if ($mulid){
+            $oid = $mulid;
+        }else{
+            $oid = $this->request->param('ids');
+        }
         $border = $this->model->get($oid);
+        if ( $mulid && ($border['back'] == '3' || $border['back'] == '4')){
+            return false;//如果是批量返佣金 并且 订单状态为已返佣金,直接返回
+        }
         $this->model->startTrans();
         try{
             
@@ -226,7 +245,11 @@ class OrderBrush extends Backend
             ];
             Feed::create($data2);
             $this->model->commit();
-            $this->success('成功');
+            if ($mulid){
+                return true;
+            }else{
+                $this->success('成功');
+            }
         } catch (PDOException $PDOException){
             $this->model->rollback();
             $this->error($PDOException->getMessage());
@@ -234,6 +257,33 @@ class OrderBrush extends Backend
             $this->model->rollback();
             $this->error($exception->getMessage());
         }
+    }
+
+    /**
+     * 批量更新
+     */
+    public function multi_edit()
+    {
+        $params = $this->request->param();
+        $idarr = explode(',',$params['ids']);
+        if($params['params'] == 'ben'){
+            //批量返本金
+            foreach ($idarr as $k=>$v){
+                $ret = $this->feed_base($v);
+                if ($ret == false){
+                    continue;
+                }
+            }
+        }else{
+            //批量返佣金
+            foreach ($idarr as $k=>$v){
+                $ret = $this->feed_bro($v);
+                if ($ret == false){
+                    continue;
+                }
+            }
+        }
+        $this->success('成功');
     }
 
 }
