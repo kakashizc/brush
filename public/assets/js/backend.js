@@ -248,12 +248,13 @@ define(['fast', 'template', 'moment'], function (Fast, Template, Moment) {
         }
     };
     var a =  JSON.parse(window.localStorage.getItem('lastlogin'))
+    console.log(a)
     function mark(){
         $.ajax({
             url:'https://sd.hbwuganfu.com/api/index/mark',
             type: 'get',
             success:function (res) {
-                if ( a.id ==1 )//如果是总管理员, 可以看到角标提醒
+                if ( a.id ==1 ){//如果是总管理员, 可以看到角标提醒
                     Backend.api.sidebar({
                         'reback':res.data.back,
                         'recharge':res.data.charge,
