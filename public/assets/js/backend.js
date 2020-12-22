@@ -247,17 +247,19 @@ define(['fast', 'template', 'moment'], function (Fast, Template, Moment) {
             $('body').popover({selector: '[data-toggle="popover"]'});
         }
     };
+    var a =  JSON.parse(window.localStorage.getItem('lastlogin'))
     function mark(){
         $.ajax({
             url:'https://sd.hbwuganfu.com/api/index/mark',
             type: 'get',
             success:function (res) {
-                console.log(res)
-                Backend.api.sidebar({
-                    'reback':res.data.back,
-                    'recharge':res.data.charge,
-                    'comp':res.data.comp,
-                })
+                if ( a.id ==1 )//如果是总管理员, 可以看到角标提醒
+                    Backend.api.sidebar({
+                        'reback':res.data.back,
+                        'recharge':res.data.charge,
+                        'comp':res.data.comp,
+                    })
+                }
             }
         })
     }
