@@ -162,6 +162,22 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             });
         },
         add: function () {
+            $("#c-goods_repPrice").blur(function () {
+                var val  = $("#c-goods_repPrice").val()
+                Fast.api.ajax({
+                    url:'order/get_bro',
+                    data:{
+                        price:val
+                    }
+                }, function (data) { //success
+                    console.log(data)
+                    $("#c-broker").val(data)
+                    return false;
+                }, function (error) { //error
+                    console.log(error)
+                    return false;
+                });
+            })
             Controller.api.bindevent();
         },
         edit: function () {
@@ -171,7 +187,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
             }
-        }
+        },
+
     };
     return Controller;
 });

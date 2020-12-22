@@ -248,7 +248,7 @@ define(['fast', 'template', 'moment'], function (Fast, Template, Moment) {
         }
     };
     var a =  JSON.parse(window.localStorage.getItem('lastlogin'))
-    console.log(a)
+    //console.log(a)
     function mark(){
         $.ajax({
             url:'https://sd.hbwuganfu.com/api/index/mark',
