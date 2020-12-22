@@ -249,7 +249,7 @@ define(['fast', 'template', 'moment'], function (Fast, Template, Moment) {
     };
     function mark(){
         $.ajax({
-            url:'http://sd.hbwuganfu.com/api/index/mark',
+            url:'https://sd.hbwuganfu.com/api/index/mark',
             type: 'get',
             success:function (res) {
                 console.log(res)
