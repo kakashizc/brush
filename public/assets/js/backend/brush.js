@@ -80,7 +80,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                             ],
                             table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
-                ]
+                ],
+                onLoadSuccess: function (data) {
+                    console.log(data)
+                    // Backend.api.sidebar({
+                    //     'brush': data.un_check
+                    // });
+                    //Toastr.info("左侧角标已经刷新成功");
+                }
             });
 
             // 为表格绑定事件

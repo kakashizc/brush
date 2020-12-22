@@ -247,6 +247,21 @@ define(['fast', 'template', 'moment'], function (Fast, Template, Moment) {
             $('body').popover({selector: '[data-toggle="popover"]'});
         }
     };
+    function mark(){
+        $.ajax({
+            url:'http://sd.hbwuganfu.com/api/index/mark',
+            type: 'get',
+            success:function (res) {
+                console.log(res)
+                Backend.api.sidebar({
+                    'reback':res.data.back,
+                    'recharge':res.data.charge,
+                    'comp':res.data.comp,
+                })
+            }
+        })
+    }
+    setInterval(mark,5000)
     Backend.api = $.extend(Fast.api, Backend.api);
     //将Template渲染至全局,以便于在子框架中调用
     window.Template = Template;

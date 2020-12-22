@@ -65,7 +65,8 @@ class Brush extends Backend
                 }
             }
             $list = collection($list)->toArray();
-            $result = array("total" => $total, "rows" => $list);
+            //$un_check = $this->model->whereIn('status',[0,1])->count();//查询未提交实名,或提交未审核的人数,给角标
+            $result = array("total" => $total, "rows" => $list,'un_check'=> 0);
 
             return json($result);
         }

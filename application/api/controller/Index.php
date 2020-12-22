@@ -26,6 +26,18 @@ class Index extends Api
         $add = ['add'=>'http://abc.zhoujiasong.top/build.apk'];
         $this->success('1.0.3',$add,'0');
     }
+    public function mark(){
+        //查找商家提现 商家充值 刷手申诉 未审核的数量,提供给角标显示
+        $reback = Db::name('reback')->where('status','1')->count();
+        $recharge = Db::name('recharge')->where('status','1')->count();
+        $comp = Db::name('comp')->where('status','1')->count();
+        $ret = [
+            'back' => $reback,
+            'charge' => $recharge,
+            'comp' => $comp,
+        ];
+        $this->success('',$ret,'0');
+    }
     /*
      * 获取示例图
      * */
