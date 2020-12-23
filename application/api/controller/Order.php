@@ -65,7 +65,7 @@ class Order extends Api
         $orderId = $this->request->param('order_id');
         $is = Db::name('order')->find($orderId);
         if ($is['status'] == '4'){
-            $this->success('商家已撤单','','1');
+            $this->shop_backs($orderId);
         }
         //查看是否已接此单
         $is = OrderItem::where(['order_id'=>$orderId,'brush_id'=>$this->_uid])->find();
@@ -225,6 +225,11 @@ class Order extends Api
      * */
     public function submitMission()
     {
+        $is = Db::name('order')->find($this->request->param('order_id'));
+        if ( $is['status'] == '4' ){//判断此订单是否已被商家撤单
+            $this->shop_backs($this->request->param('order_id'));
+        }
+        
         $insert = [];
         $insert['images'] = $this->request->param('images');//所有图片的地址,用逗号拼接
         $type = $this->request->param('type');//订单类型
@@ -578,7 +583,7 @@ class Order extends Api
      * */
     public function shop_back()
     {
-        $orderid = input('id');
+        $orderid = input('order_id');
         $uid = $this->_uid;
         $order = OrderModel::get($orderid);
         if ($order->status != '4'){
@@ -605,7 +610,31 @@ class Order extends Api
         }else{
             $this->success('异常','','2');
         }
-
     }
-
+    private function shop_backs($orderid)
+    {
+        $uid = $this->_uid;
+        $order = OrderModel::get($orderid);
+        $item = OrderItem::get(['order_id'=>$orderid,'brush_id' => $uid]);
+        if ($item){//如果已经接过此单,重新进入接单页面
+            Db::startTrans();
+            try {
+                //1,子订单状态修改
+                $item->brush_id = 0;
+                $item->status = 1;
+                $item->save();
+                //2,返回给商家此单的扣除的本金和佣金
+                $total = $order['broker'] + $order['goods_repPrice'];
+                Admin::where('id',$order['shop_id'])->setInc('money',$total);
+                Admin::where('id',$order['shop_id'])->setDec('total_order',1);
+                Db::commit();
+                $this->success('商家已撤单','','1');
+            }catch(Exception $exception){
+                Db::rollback();
+                $this->success('异常','','1');
+            }
+        }else{//没接此单,第一次接此单就是撤单状态
+            $this->success('此订单已撤销,请刷新页面','','1');
+        }
+    }
 }
