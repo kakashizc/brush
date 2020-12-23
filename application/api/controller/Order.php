@@ -578,7 +578,7 @@ class Order extends Api
      * */
     public function shop_back()
     {
-        $orderid = input('order_id');
+        $orderid = input('id');
         $uid = $this->_uid;
         $order = OrderModel::get($orderid);
         if ($order->status != '4'){
