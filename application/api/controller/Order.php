@@ -19,6 +19,7 @@ use app\admin\model\Order as OrderModel;
 use think\Db;
 use app\admin\model\Comp;
 use app\admin\model\Complain;
+use think\Exception;
 use think\Request;
 
 /*
@@ -62,6 +63,10 @@ class Order extends Api
     public function doMission()
     {
         $orderId = $this->request->param('order_id');
+        $is = Db::name('order')->find($orderId);
+        if ($is['status'] == '4'){
+            $this->success('商家已撤单','','1');
+        }
         //查看是否已接此单
         $is = OrderItem::where(['order_id'=>$orderId,'brush_id'=>$this->_uid])->find();
          if ( $is ){
@@ -565,6 +570,39 @@ class Order extends Api
         }else{
             $this->success('无订单',$orders,'1');
         }
+    }
+
+    /*
+     * 监听商家撤单
+     * @param $order_id int 主订单id
+     * */
+    public function shop_back()
+    {
+        $orderid = input('order_id');
+        $uid = $this->_uid;
+        $order = OrderModel::get($orderid);
+        $item = OrderItem::get(['order_id'=>$orderid,'brush_id' => $uid]);
+        if ($item){
+            Db::startTrans();
+            try {
+                //1,子订单状态修改
+                $item->brush_id = 0;
+                $item->status = 1;
+                $item->save();
+                //2,返回给商家此单的扣除的本金和佣金
+                $total = $order['broker'] + $order['goods_repPrice'];
+                Admin::where('id',$order['shop_id'])->setInc('money',$total);
+                Admin::where('id',$order['shop_id'])->setDec('total_order',1);
+                Db::commit();
+                $this->success('商家已撤单,如已付款请联系商家','','0');
+            }catch(Exception $exception){
+                Db::rollback();
+                $this->success('异常','','1');
+            }
+        }else{
+            $this->success('异常','','1');
+        }
+
     }
 
 }

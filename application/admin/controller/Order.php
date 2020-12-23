@@ -251,7 +251,7 @@ class Order extends Backend
             Admin::where('id',$order['shop_id'])->setDec('total_order',$order['order_num']);
         }else{
             //2,如果状态是2 说明审核通过发布了,先返回未被接单的子订单金额 (然后在 收回订单接口中返回订单金额给商家, 刷手已提交的订单不可以撤单)
-            $last_num = OrderItem::where(['id'=>$order['id'],'brush_id' => 0])->count();
+            $last_num = OrderItem::where(['order_id'=>$order['id'],'brush_id' => 0])->count();
             $total = ($order['broker'] + $order['goods_repPrice']) * $last_num??0;
             $res = Admin::where('id',$order['shop_id'])->setInc('money',$total);
              Admin::where('id',$order['shop_id'])->setDec('total_order',$last_num);
