@@ -2,6 +2,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
     var Controller = {
         index: function () {
+            var a =  JSON.parse(window.localStorage.getItem('lastlogin'));
+            if (a.id == 1){
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
@@ -33,8 +35,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 ]
             });
 
-            // 为表格绑定事件
-            Table.api.bindevent(table);
+                // 为表格绑定事件
+                Table.api.bindevent(table);
+            }
         },
         add: function () {
             Controller.api.bindevent();
