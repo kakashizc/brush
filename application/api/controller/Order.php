@@ -227,9 +227,9 @@ class Order extends Api
     {
         $is = Db::name('order')->find($this->request->param('order_id'));
         if ( $is['status'] == '4' ){//判断此订单是否已被商家撤单
-            $this->shop_backs($this->request->param('order_id'));
+            $this->shop_backs($this->request->param('order_id'),'5');
         }
-        
+
         $insert = [];
         $insert['images'] = $this->request->param('images');//所有图片的地址,用逗号拼接
         $type = $this->request->param('type');//订单类型
@@ -611,8 +611,9 @@ class Order extends Api
             $this->success('异常','','2');
         }
     }
-    private function shop_backs($orderid)
+    private function shop_backs($orderid,$code = null)
     {
+        $code = $code?$code:'1';
         $uid = $this->_uid;
         $order = OrderModel::get($orderid);
         $item = OrderItem::get(['order_id'=>$orderid,'brush_id' => $uid]);
@@ -628,13 +629,13 @@ class Order extends Api
                 Admin::where('id',$order['shop_id'])->setInc('money',$total);
                 Admin::where('id',$order['shop_id'])->setDec('total_order',1);
                 Db::commit();
-                $this->success('商家已撤单','','1');
+                $this->success('商家已撤单','',$code);
             }catch(Exception $exception){
                 Db::rollback();
-                $this->success('异常','','1');
+                $this->success('异常','',$code);
             }
         }else{//没接此单,第一次接此单就是撤单状态
-            $this->success('此订单已撤销,请刷新页面','','1');
+            $this->success('此订单已撤销,请刷新页面','',$code);
         }
     }
 }
