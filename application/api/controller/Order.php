@@ -581,6 +581,9 @@ class Order extends Api
         $orderid = input('order_id');
         $uid = $this->_uid;
         $order = OrderModel::get($orderid);
+        if ($order->status != '4'){
+            $this->success('商家未取消,请继续执行任务','','0');
+        }
         $item = OrderItem::get(['order_id'=>$orderid,'brush_id' => $uid]);
         if ($item){
             Db::startTrans();
@@ -594,13 +597,13 @@ class Order extends Api
                 Admin::where('id',$order['shop_id'])->setInc('money',$total);
                 Admin::where('id',$order['shop_id'])->setDec('total_order',1);
                 Db::commit();
-                $this->success('商家已撤单,如已付款请联系商家','','0');
+                $this->success('商家已撤单,如已付款请联系商家','','1');
             }catch(Exception $exception){
                 Db::rollback();
-                $this->success('异常','','1');
+                $this->success('异常','','2');
             }
         }else{
-            $this->success('异常','','1');
+            $this->success('异常','','2');
         }
 
     }
