@@ -25,6 +25,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'order_no', title: __('Order_no')},
                         {field: 'shop_name', title: __('Shop_name')},
                         {field: 'act_account', title: '刷手平台账号'},
+                        {field: 'act_money', title: '刷手输入的付款金额'},
                         {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2'),"3":__('Status 3'),"4":__('Status 4'),"5":__('Status 5'),}, formatter: Table.api.formatter.status},
                         {field: 'ctime', title: __('Ctime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'broker', title: __('Broker'), operate:'BETWEEN'},
