@@ -354,7 +354,7 @@ class Brush extends Api
             ->where('brush_id',$uid)
             ->where('status','NEQ','1')
             ->whereTime('ctime',[$start,$end])
-            ->value('money');
+            ->sum('money');
         $ret['today'] = $today;//今日佣金总额
         // 查找支出/收入明细
         //1,提现记录
