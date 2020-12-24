@@ -154,6 +154,7 @@ class OrderBrush extends Backend
             Brush::where(['id'=>$border->brush_id])->setInc('money',$moy);
             Brush::where(['id'=>$border->brush_id])->setInc('total',$moy);//给刷手总额增加
             $this->model->where(['id'=>$oid])->setField('confirmtime',time());//更新 商家确认时间字段
+            $this->model->where(['id'=>$oid])->setField('donetime',time());//更新 商家确认时间字段
             //3,插入一条返本金记录
             $data = [
                 'brush_id' => $border->brush_id,

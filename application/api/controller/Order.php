@@ -255,7 +255,7 @@ class Order extends Api
                 $input_ono = substr($insert['act_no'],-6);
                 $plat_ono = substr($plat_no,-6);
                 if ($input_ono != $plat_ono){
-                    $ono = 1;
+                    $this->success('订单号核对失败,进入申诉','','3');
                 }
             }
         }
@@ -312,21 +312,11 @@ class Order extends Api
                 $this->_redis->rename($str,$newstr);//改 delay 为 active 到时自动删除
                 $this->_redis->setex($newstr,1,'1');//设置时间为1,然后马上会被删除了
                 Db::commit();
-                if ( isset($comp) || isset($ono) ){
+                if ( isset($comp)  ){
                     $return_data = [
                         'order_brush_id' => $res->id
                     ];
-                    if(isset($comp)){
-                        $msg = '提交成功,金额核对不同,提示申诉';
-                        $code = '2';
-                    }elseif(isset($ono)){
-                        $msg = '提交失败,订单号核对失败,提示申诉';
-                        $code = '3';
-                    }elseif( isset($comp) && isset($ono)){
-                        $msg = '提交失败,订单号核对失败,金额核对不同,提示申诉';
-                        $code = '4';
-                    }
-                    $this->success($msg,$return_data,$code);
+                    $this->success('提交成功,金额核对不同,进入申诉',$return_data,'2');
                 }else{
                     $this->success('提交成功,等待商家审核','','0');
                 }
