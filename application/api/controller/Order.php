@@ -113,7 +113,7 @@ class Order extends Api
             if ($res) {
                 //redis 存入key
                 $str = $item->id.'_'.$this->_uid.'_'.'delay';
-                $second = 20;//30分钟*60秒 = 1800秒,如果此时间内未有动作 订单自动回收
+                $second = 1800;//30分钟*60秒 = 1800秒,如果此时间内未有动作 订单自动回收
                 $this->_redis->setex($str,$second, "pay");
                 Db::commit();
                 $this->success('接单成功',$orderInfo,'0');
@@ -206,7 +206,7 @@ class Order extends Api
                     $usedtime = 1800-$key_last_time; //已用的时间
                     $lasttime = 3600-$usedtime;
                     
-                    $re = $this->_redis->setex($str,20, "pay");
+                    $re = $this->_redis->setex($str,$lasttime, "pay");
                     $this->success('验证通过','','0');
                 }else{
                     $this->success('验证通过','','0');
