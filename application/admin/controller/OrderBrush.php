@@ -83,7 +83,7 @@ class OrderBrush extends Backend
                 if ($group_id == 1){
                     $row->isadmin = 1;
                 }
-                $row->visible(['id','order_no','isadmin','shop_name','status','ctime','broker','stime','ptime','confirmtime','gettime','donetime','back','images','else','type','act_account']);
+                $row->visible(['id','order_no','isadmin','shop_name','status','ctime','broker','stime','ptime','confirmtime','gettime','donetime','back','images','else','type','act_account','act_money']);
                 $row->visible(['admin']);
 				$row->getRelation('admin')->visible(['username','nickname']);
 				$row->visible(['brush']);
