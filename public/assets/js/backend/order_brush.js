@@ -51,7 +51,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'orderb.goods_num', title: __('Order.goods_num')},
                         {field: 'orderb.goods_image', title: __('Order.goods_image'), events: Table.api.events.image, formatter: Table.api.formatter.image},
                         // {field: 'order.status', title: __('Order.status'), formatter: Table.api.formatter.status},
-                        {field: 'orderb.broker', title: __('Order.broker'), operate:'BETWEEN'},
+                        //{field: 'orderb.act_bro', title: __('Order.broker'), operate:'BETWEEN'},
                         {field: 'operate', title: __('Operate'),
                             buttons:[
                                 {
