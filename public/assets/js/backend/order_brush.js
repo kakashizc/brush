@@ -36,6 +36,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'donetime', title: __('Donetime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'back', title: __('Back'), searchList: {"1":__('Back 1'),"2":__('Back 2'),"3":__('Back 3'),"4":__('Back 4')}, formatter: Table.api.formatter.normal},
                         {field: 'images', title: __('Images'), events: Table.api.events.image, formatter: Table.api.formatter.images},
+                        {field: 'pj_images', title: '评价图片', events: Table.api.events.image, formatter: Table.api.formatter.images},
                         {field: 'else', title: '其他核对问题', operate:'BETWEEN'},
                         {field: 'type', title: __('Type'), searchList: {"1":__('Type 1'),"2":__('Type 2')}, formatter: Table.api.formatter.normal},
                         {field: 'admin.username', title: __('Admin.username')},
