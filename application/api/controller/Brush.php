@@ -358,13 +358,13 @@ class Brush extends Api
         $ret['today'] = $today;//今日佣金总额
         // 查找支出/收入明细
         //1,提现记录
-        $txrecord = Db::name('tx')->where('brush_id',$uid)->field("money,FROM_UNIXTIME(ctime,'%Y-%m-%d %H:%i:%s') as ctime")->where('status','1')->select()->toArray();
+        $txrecord = Db::name('tx')->order('id desc')->where('brush_id',$uid)->field("money,FROM_UNIXTIME(ctime,'%Y-%m-%d %H:%i:%s') as ctime")->where('status','1')->select()->toArray();
         $ret['tixian'] = $txrecord;
         //2,获取佣金记录
-        $getrecord = Db::name('feed')->where('brush_id',$uid)->field("money,status,FROM_UNIXTIME(ctime,'%Y-%m-%d %H:%i:%s') as ctime")->select()->toArray();
+        $getrecord = Db::name('feed')->order('id desc')->where('brush_id',$uid)->field("money,status,FROM_UNIXTIME(ctime,'%Y-%m-%d %H:%i:%s') as ctime")->select()->toArray();
         $ret['get'] = $getrecord;
         //3,管理员操作余额记录
-        $adrecord = Db::name('feed_brush')->field("money,status,FROM_UNIXTIME(ctime,'%Y-%m-%d %H:%i:%s') as ctime")->where('brush_id',$uid)->select()->toArray();
+        $adrecord = Db::name('feed_brush')->order('id desc')->field("money,status,FROM_UNIXTIME(ctime,'%Y-%m-%d %H:%i:%s') as ctime")->where('brush_id',$uid)->select()->toArray();
         $ret['admin'] = $adrecord;
         $this->success('成功',$ret,'0');
     }
