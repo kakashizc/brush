@@ -208,6 +208,7 @@ class Index extends Api
         }
         //插入
         $data['mobile'] = $mobile;
+        $data['ctime'] = time();
         $data['password'] = md5($password);
         $data['pid'] = $parent->id;
         $is = Brush::create($data);
