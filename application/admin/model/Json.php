@@ -32,7 +32,7 @@ class Json extends Model
     
     public function getImglistList()
     {
-        return ['支付截图' => __('支付截图'), '收货截图' => __('收货截图')];
+        return ['支付截图' => __('支付截图'), '收货截图' => __('收货截图'),'假聊截图' => __('假聊截图')];
     }
 
 

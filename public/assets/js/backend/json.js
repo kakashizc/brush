@@ -25,7 +25,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
                         {field: 'name', title: __('Name')},
-                        {field: 'imglist', title: __('Imglist'), searchList: {"支付截图":__('支付截图'),"收货截图":__('收货截图')}, operate:'FIND_IN_SET', formatter: Table.api.formatter.label},
+                        {field: 'imglist', title: __('Imglist'), searchList: {"支付截图":__('支付截图'),"收货截图":__('收货截图'),"假聊截图":__("假聊截图")}, operate:'FIND_IN_SET', formatter: Table.api.formatter.label},
                         {field: 'store_id', title: __('Store_id')},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
