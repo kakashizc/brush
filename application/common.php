@@ -362,3 +362,11 @@ if (!function_exists('hsv2rgb')) {
         ];
     }
 }
+if (!function_exists('tostar')) {
+    function tostar($string)
+    {
+        $arr = mb_str_split($string);
+        $arr = implode('*',$arr);
+        return $arr;
+    }
+}

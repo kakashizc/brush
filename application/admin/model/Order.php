@@ -131,7 +131,7 @@ class Order extends Model
         //对数据进行拼装
         $info = array_shift($data); //取出二维数组第一个元素,同时删除原二维数组第一个元素
 //        $info['shop']['nickname'] = mb_substr( $info['admin']['nickname'], 0, 1 )."*****";
-        $info['shop']['nickname'] = $info['act_sname'];
+        $info['shop']['nickname'] = tostar($info['act_sname']);
         unset($info['admin']);
         unset($info['goods_ame']);
         unset($info['goods_link']);
@@ -162,7 +162,7 @@ class Order extends Model
         //对数据进行拼装
         $info = array_shift($data); //取出二维数组第一个元素,同时删除原二维数组第一个元素
 //        $info['shop']['nickname'] = mb_substr( $info['admin']['nickname'], 0, 1 )."*****";
-        $info['shop']['nickname'] = $info['act_sname'];
+        $info['shop']['nickname'] = tostar($info['act_sname']);
         unset($info['admin']);
         unset($info['goods_link']);
         unset($info['broker']);
