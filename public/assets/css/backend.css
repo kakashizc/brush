@@ -1005,4 +1005,7 @@ table.table-nowrap thead > tr > th {
   text-align: center;
   display: inline-block;
 }
+.fixed-table-container tbody .selected td{
+  background-color: rgb(24,188,156);
+}
 /*# sourceMappingURL=backend.css.map */
