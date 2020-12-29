@@ -24,6 +24,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
+                        {field: 'plat.name', title: __('Plat.name')},
                         {field: 'order_no', title: __('Order_no')},
                         {field: 'shop_id', title: __('Shop_id')},
                         {field: 'goods_ame', title: __('Goods_ame')},
@@ -47,7 +48,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'json_id', title: __('Json_id')},
                         {field: 'admin.username', title: __('Admin.username')},
                         {field: 'admin.nickname', title: __('Admin.nickname')},
-                        {field: 'plat.name', title: __('Plat.name')},
+
                         {field: 'plat.brok', title: __('Plat.brok'), operate:'BETWEEN'},
                         {field: 'json.name', title: __('Json.name')},
                         {field: 'operate', title: __('Operate'),

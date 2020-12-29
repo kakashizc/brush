@@ -22,6 +22,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
+                        {field: 'plat.name', title: __('Plat.name')},
                         {field: 'order_no', title: __('Order_no')},
                         {field: 'shop_name', title: __('Shop_name')},
                         {field: 'act_account', title: '刷手平台账号'},
@@ -43,7 +44,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'admin.nickname', title: __('Admin.nickname')},
                         {field: 'brush.name', title: __('Brush.name')},
                         {field: 'brush.mobile', title: __('Brush.mobile')},
-                        {field: 'plat.name', title: __('Plat.name')},
+
                         {field: 'plat.image', title: __('Plat.image'), events: Table.api.events.image, formatter: Table.api.formatter.image},
                         {field: 'orderb.goods_ame', title: __('Order.goods_ame')},
                         {field: 'orderb.goods_price', title: __('Order.goods_price'), operate:'BETWEEN'},

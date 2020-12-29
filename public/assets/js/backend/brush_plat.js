@@ -23,6 +23,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
+                        {field: 'plat.name', title: __('Plat.name')},
                         {field: 'account', title: __('Account')},
                         {field: 'recive', title: __('Recive')},
                         {field: 'mobile', title: __('Mobile')},
@@ -38,7 +39,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
                         // {field: 'plat_id', title: __('Plat_id')},
                         {field: 'brush_id', title: __('Brush_id')},
-                        {field: 'plat.name', title: __('Plat.name')},
+
                         {field: 'brush.name', title: __('Brush.name')},
                         {field: 'brush.mobile', title: __('Brush.mobile')},
                         {field: 'brush.indent_name', title: __('Brush.indent_name')},
