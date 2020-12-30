@@ -38,8 +38,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'admin.nickname', title: __('Admin.nickname')},
                         {field: 'brush.name', title: __('Brush.name')},
                         {field: 'brush.mobile', title: __('Brush.mobile')},
-                        {field: 'orderbrush.id', title: __('Orderbrush.id')},
-                        {field: 'orderbrush.order_no', title: __('Orderbrush.order_no')},
+                        {field: 'orderbrush.act_no', title: '订单号'},
                         {field: 'orderbrush.shop_name', title: __('Orderbrush.shop_name')},
                         {field: 'complain.title', title: __('Complain.title')},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
