@@ -244,6 +244,9 @@ class Order extends Backend
         $id = $this->request->param('ids');
         //1,如果订单状态是 0 1 3 说明刷手没有接单,直接算总金额返给商家就行
         $order = $this->model->find($id);
+        if ($order['status'] == '4'){
+            $this->success('此单已撤销,请勿重复撤单!');
+        }
         $this->model->startTrans();
         if ( $order['status'] != '2' ){
             $total = ($order['broker'] + $order['goods_repPrice']) * $order['order_num'];
