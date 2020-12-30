@@ -260,7 +260,7 @@ define(['fast', 'template', 'moment'], function (Fast, Template, Moment) {
                         'reback':[res.data.back,'blue','label'],
                         'recharge':[res.data.charge,'blue','label'],
                         'comp':[res.data.comp,'blue','label'],
-                        'order':[res.data.new,'blue','label'],
+                        'order':[res.data.order,'blue','label'],
                     })
                 }
             }
