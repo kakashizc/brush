@@ -66,11 +66,16 @@ class Index extends Backend
         $comp = Db::name('comp')->where('status','1')->count();
         //商家提交任务,待管理员审核发布的数
         $orders = Db::name('order')->where('status','1')->count();
-        return [
-            'auth'=>[$shop,'red','badge'],
-            'tousu'=>[$comp,'red','badge'],
-            'ssww'=>[$orders,'red','badge'],
-        ];
+        $adminId = $this->auth->id;
+        if ($adminId == 1){
+            return [
+                'auth'=>[$shop,'red','badge'],
+                'tousu'=>[$comp,'red','badge'],
+                'ssww'=>[$orders,'red','badge'],
+            ];
+        }else{
+            return [];
+        }
     }
     /**
      * 管理员登录
