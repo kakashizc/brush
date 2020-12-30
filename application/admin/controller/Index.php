@@ -72,6 +72,7 @@ class Index extends Backend
                 'auth'=>[$shop,'red','badge'],
                 'tousu'=>[$comp,'red','badge'],
                 'ssww'=>[$orders,'red','badge'],
+                'order'=>[$orders,'red','badge']
             ];
         }else{
             return [];
