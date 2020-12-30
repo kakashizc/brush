@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use app\common\controller\Backend;
+use app\common\controller\sendMsg;
 use think\Db;
 use think\Exception;
 use think\exception\PDOException;
@@ -257,14 +258,20 @@ class Order extends Backend
             $last_num = OrderItem::where(['order_id'=>$order['id'],'brush_id' => 0])->count();
             $total = ($order['broker'] + $order['goods_repPrice']) * $last_num??0;
             $res = Admin::where('id',$order['shop_id'])->setInc('money',$total);
-             Admin::where('id',$order['shop_id'])->setDec('total_order',$last_num);
+            Admin::where('id',$order['shop_id'])->setDec('total_order',$last_num);
         }
         $order->status = '4';
         $order->save();
         $this->model->commit();
-        if ($res) $this->success('撤单成功,金额已返');
-        $this->model->rollback();
-        $this->error('失败');
+        if ($res){
+            //给管理员后台发送一个订单提醒
+            $send = new sendMsg();
+            $send->send('有新的商家撤单,请及时查看!');
+            $this->success('撤单成功,金额已返');
+        } else {
+            $this->model->rollback();
+            $this->error('失败');
+        }
     }
     
     /*

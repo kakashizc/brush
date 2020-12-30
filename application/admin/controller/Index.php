@@ -5,6 +5,7 @@ namespace app\admin\controller;
 use app\admin\model\AdminLog;
 use app\common\controller\Backend;
 use think\Config;
+use think\Db;
 use think\Hook;
 use think\Validate;
 
@@ -31,13 +32,14 @@ class Index extends Backend
      */
     public function index()
     {
-        //左侧菜单
-        list($menulist, $navlist, $fixedmenu, $referermenu) = $this->auth->getSidebar([
-            'dashboard' => 'hot',
-            'addon'     => ['new', 'red', 'badge'],
-            'auth/rule' => __('Menu'),
-            'general'   => ['new', 'purple'],
-        ], $this->view->site['fixedpage']);
+        //左侧菜单(框架自带的, 先屏蔽掉了, 作为参考用)
+//        list($menulist, $navlist, $fixedmenu, $referermenu) = $this->auth->getSidebar([
+//            'dashboard' => 'hot',
+//            'addon'     => ['new', 'red', 'badge'],
+//            'auth/rule' => __('Menu'),
+//            'general'   => ['new', 'purple'],
+//        ], $this->view->site['fixedpage']);
+        list($menulist, $navlist, $fixedmenu, $referermenu) = $this->auth->getSidebar($this->get_code(), $this->view->site['fixedpage']);
         $action = $this->request->request('action');
         if ($this->request->isPost()) {
             if ($action == 'refreshmenu') {
@@ -51,7 +53,25 @@ class Index extends Backend
         $this->view->assign('title', __('Home'));
         return $this->view->fetch();
     }
-
+    /*
+     * 获取一次菜单的角标提醒
+     * */
+    private function get_code()
+    {
+        //商家提现-充值提醒数
+        $reback = Db::name('reback')->where('status','1')->count();
+        $recharge = Db::name('recharge')->where('status','1')->count();
+        $shop = $reback+$recharge;
+        //投诉未审核的订单数量
+        $comp = Db::name('comp')->where('status','1')->count();
+        //商家提交任务,待管理员审核发布的数
+        $orders = Db::name('order')->where('status','1')->count();
+        return [
+            'auth'=>[$shop,'red','badge'],
+            'tousu'=>[$comp,'red','badge'],
+            'ssww'=>[$orders,'red','badge'],
+        ];
+    }
     /**
      * 管理员登录
      */
