@@ -75,6 +75,17 @@ class Index extends Api
         $this->success('获取成功',$res,'0');
     }
 
+    /*
+     * 获取绑定平台图片示例图
+     * */
+    public function get_plat_image()
+    {
+        $res = Db::name('plat_image')
+            ->field("concat('$this->img',my_image) as my_image,concat('$this->img',zl_image) as zl_image,concat('$this->img',tq_image) as tq_image,concat('$this->img',jx_image) as jx_image")
+            ->find();
+        $this->success('获取成功',$res,'0');
+    }
+
     public function tered()
     {
         $rds = new \Redis();
