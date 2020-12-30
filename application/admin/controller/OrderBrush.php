@@ -87,7 +87,7 @@ class OrderBrush extends Backend
                 $row->visible(['admin']);
 				$row->getRelation('admin')->visible(['username','nickname']);
 				$row->visible(['brush']);
-				$row->getRelation('brush')->visible(['name','mobile']);
+				$row->getRelation('brush')->visible(['name','mobile','indent_name']);
 				$row->visible(['plat']);
 				$row->getRelation('plat')->visible(['name','image']);
 				$row->visible(['orderb']);

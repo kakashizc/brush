@@ -74,7 +74,7 @@ class Comp extends Backend
             foreach ($list as $row) {
                 
                 $row->getRelation('admin')->visible(['username','nickname']);
-				$row->getRelation('brush')->visible(['name','mobile']);
+				$row->getRelation('brush')->visible(['name','mobile','indent_name']);
 				$row->getRelation('orderbrush')->visible(['id','order_no','shop_name','act_no']);
 				$row->getRelation('complain')->visible(['title']);
             }

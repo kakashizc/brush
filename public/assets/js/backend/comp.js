@@ -36,7 +36,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'feed', title: __('Feed')},
                         {field: 'admin.username', title: __('Admin.username')},
                         {field: 'admin.nickname', title: __('Admin.nickname')},
-                        {field: 'brush.name', title: __('Brush.name')},
+                        {field: 'brush.indent_name', title: __('Brush.name')},
                         {field: 'brush.mobile', title: __('Brush.mobile')},
                         {field: 'orderbrush.act_no', title: '订单号'},
                         {field: 'orderbrush.shop_name', title: __('Orderbrush.shop_name')},

@@ -42,7 +42,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'type', title: __('Type'), searchList: {"1":__('Type 1'),"2":__('Type 2')}, formatter: Table.api.formatter.normal},
                         {field: 'admin.username', title: __('Admin.username')},
                         {field: 'admin.nickname', title: __('Admin.nickname')},
-                        {field: 'brush.name', title: __('Brush.name')},
+                        {field: 'brush.indent_name', title: __('Brush.name')},
                         {field: 'brush.mobile', title: __('Brush.mobile')},
 
                         {field: 'plat.image', title: __('Plat.image'), events: Table.api.events.image, formatter: Table.api.formatter.image},

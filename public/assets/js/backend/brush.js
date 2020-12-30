@@ -23,7 +23,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'name', title: __('Name')},
+                        {field: 'indent_name', title: __('Name')},
                         {field: 'mobile', title: __('Mobile')},
                         {field: 'password', title: __('Password')},
                         {field: 'avatar', title: __('Avatar'), events: Table.api.events.image, formatter: Table.api.formatter.image},
@@ -35,7 +35,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'money', title: __('Money'), operate:'BETWEEN'},
                         {field: 'onum', title: __('Onum')},
                         {field: 'qqwx', title: __('Qqwx')},
-                        {field: 'indent_name', title: __('Indent_name')},
                         {field: 'indent_no', title: __('Indent_no')},
                         {field: 'front_image', title: __('Front'), events: Table.api.events.image, formatter: Table.api.formatter.image},
                         {field: 'back_image', title: __('Back'), events: Table.api.events.image, formatter: Table.api.formatter.image},
