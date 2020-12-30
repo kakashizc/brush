@@ -31,10 +31,13 @@ class Index extends Api
         $reback = Db::name('reback')->where('status','1')->count();
         $recharge = Db::name('recharge')->where('status','1')->count();
         $comp = Db::name('comp')->where('status','1')->count();
+        //商家发布新任务 给角标提示
+        $new = Db::name('order')->where('status','1')->count();
         $ret = [
             'back' => $reback,
             'charge' => $recharge,
             'comp' => $comp,
+            'order' => $new,
         ];
         $this->success('',$ret,'0');
     }

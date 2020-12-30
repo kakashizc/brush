@@ -259,6 +259,7 @@ define(['fast', 'template', 'moment'], function (Fast, Template, Moment) {
                         'reback':res.data.back,
                         'recharge':res.data.charge,
                         'comp':res.data.comp,
+                        'order':res.data.new,
                     })
                 }
             }

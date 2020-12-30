@@ -23,7 +23,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
                         {field: 'plat.name', title: __('Plat.name')},
-                        {field: 'order_no', title: __('Order_no')},
+                        {field: 'act_no', title: __('Order_no')},
                         {field: 'shop_name', title: __('Shop_name')},
                         {field: 'act_account', title: '刷手平台账号'},
                         {field: 'act_money', title: '刷手输入的付款金额'},
