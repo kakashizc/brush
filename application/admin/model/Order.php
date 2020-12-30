@@ -46,7 +46,7 @@ class Order extends Model
 
     public function getBaseTypeList()
     {
-        return ['1' => __('Base_type 1'), '2' => __('Base_type 2'), '3' => __('Base_type 3')];
+        return ['1' => __('Base_type 1'), '3' => __('Base_type 3')];
     }
 
     public function getBroTypeList()
