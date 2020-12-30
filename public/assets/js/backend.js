@@ -254,12 +254,13 @@ define(['fast', 'template', 'moment'], function (Fast, Template, Moment) {
             url:'https://sd.hbwuganfu.com/api/index/mark',
             type: 'get',
             success:function (res) {
+                console.log(res)
                 if ( a.id ==1 ){//如果是总管理员, 可以看到角标提醒
                     Backend.api.sidebar({
-                        'reback':res.data.back,
-                        'recharge':res.data.charge,
-                        'comp':res.data.comp,
-                        'order':res.data.new,
+                        'reback':[res.data.back,'blue','label'],
+                        'recharge':[res.data.charge,'blue','label'],
+                        'comp':[res.data.comp,'blue','label'],
+                        'order':[res.data.new,'blue','label'],
                     })
                 }
             }
