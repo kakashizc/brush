@@ -255,7 +255,7 @@ class Order extends Api
                 $input_ono = substr($insert['act_no'],-6);
                 $plat_ono = substr($plat_no,-6);
                 if ($input_ono != $plat_ono){
-                    $this->success('订单号核对失败,进入申诉','','3');
+                    $this->success('订单号核对失败,请重新核对订单号','','3');
                 }
             }
         }
