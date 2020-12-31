@@ -303,7 +303,7 @@ class Brush extends Api
         //根据唯一索引,拼接用户id和当前日期, 限制每天只有一条提现记录
         $str = $uid.'_'.date('Y-m-d',time());
         $insert['date'] = $str;
-        $insert['money'] = $last->money;
+        $insert['money'] = $money;
         $insert['brush_id'] = $uid;
         $insert['ctime'] = time();
         //查找刷手的银行卡信息
