@@ -334,7 +334,7 @@ class Brush extends Api
             }
         }catch(Exception $exception){
             Db::rollback();
-            $this->success($exception->getMessage(),'','1');
+            $this->success('一天只能申请一次提现!','','1');
         }catch(PDOException $PDOException ){
             Db::rollback();
             $this->success('一天只能申请一次提现!','','1');
