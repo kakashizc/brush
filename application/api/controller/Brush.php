@@ -293,7 +293,7 @@ class Brush extends Api
             $this->success('金额与实际账号金额不符,请联系管理员','','1');
         }
         $last = BrushModel::get($uid);
-        if ($last->money != $money){
+        if ($last->money < 3000 && $last->money != $money){
             $this->success('金额与实际账号金额不符,请联系管理员','','1');
         }
         $alredy = Db::name('tx')->where('status','0')->where('brush_id',$uid)->find();
