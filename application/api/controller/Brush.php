@@ -319,8 +319,13 @@ class Brush extends Api
             $insert['indent_no'] = $bank['indent_no'];
             $res = Db::name('tx')->insertGetId($insert);
             if ($res){
-                //将用户余额置0
-                Db::name('brush')->where('id',$uid)->setField('money',0);
+                //限额 单笔最大提现 3000元
+                if ($money == 3000){
+                    Db::name('brush')->where('id',$uid)->setDec('money',3000);
+                }else if ($money < 3000){
+                    //将用户余额置0
+                    Db::name('brush')->where('id',$uid)->setField('money',0);
+                }
                 Db::commit();
                 $this->success('已提交申请','','0');
             }else{
