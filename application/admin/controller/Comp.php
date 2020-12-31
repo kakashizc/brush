@@ -118,7 +118,7 @@ class Comp extends Backend
                         $row->validateFailException(true)->validate($validate);
                     }
                     //客户要求申诉通过后,刷手订单修改为正常订单
-                    $res = Db::name('order_brush')->where('id',$row->orderbrush_id)->setField('status','3');
+                    Db::name('order_brush')->where('id',$row->orderbrush_id)->setField('status','2');
                     $result = $row->allowField(true)->save($params);
                     Db::commit();
                 } catch (ValidateException $e) {
