@@ -614,10 +614,21 @@ class Order extends Api
                 $item->brush_id = 0;
                 $item->status = 1;
                 $item->save();
-                //2,返回给商家此单的扣除的本金和佣金
-                $total = $order['broker'] + $order['goods_repPrice'];
-                Admin::where('id',$order['shop_id'])->setInc('money',$total);
-                Admin::where('id',$order['shop_id'])->setDec('total_order',1);
+                //先查询此刷手接的此订单有没有返过钱,如果返了就不再返钱了 防止恶意刷接口
+                $where = [
+                    'order_id'=> $orderid,
+                    'shop_id' => $order['shop_id'],
+                    'brush_id' => $uid
+                ];
+                $is = Db::name('limit')->where($where)->find();
+                if (!$is){
+                    //2,返回给商家此单的扣除的本金和佣金
+                    $total = $order['broker'] + $order['goods_repPrice'];
+                    Admin::where('id',$order['shop_id'])->setInc('money',$total);
+                    Admin::where('id',$order['shop_id'])->setDec('total_order',1);
+                    //3,插入一条限制记录 记录已经给商家返过钱了, 防止恶意刷接口 多次返钱
+                    Db::name('limit')->insertGetId($where);
+                }
                 Db::commit();
                 $this->success('商家已撤单','',$code);
             }catch(Exception $exception){
