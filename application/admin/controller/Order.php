@@ -11,6 +11,7 @@ use think\exception\ValidateException;
 use app\admin\model\Admin;
 use app\admin\model\OrderItem;
 use app\api\controller\Upload;
+use think\Hook;
 
 /**
  * 订单
@@ -104,6 +105,16 @@ class Order extends Backend
                     'publish_time' => time()
                 );
                 $this->model->where('id',$id)->update($up);
+
+                //扣除商家余额 和 增加发布订单的记录条数
+                $orderinfo = $this->model->find($id);
+                $total = ($orderinfo['broker']+$orderinfo['goods_repPrice']) * $orderinfo['order_num'];
+                Db::name('admin')->where('id',$order['shop_id'])->setDec('money',$total);
+                Db::name('admin')->where('id',$order['shop_id'])->setInc('total_order',$orderinfo['order_num']);
+                //商家余额
+                $admins = Admin::get($order['shop_id']);
+                //增加一条 财务记录
+                admin_record($order['shop_id'],1,$total,$admins->money,$admins->nickname);
                 $this->model->commit();
                 $this->success('任务发布成功','order/index');
             }else{
@@ -196,10 +207,7 @@ class Order extends Backend
                 if ($total > $store['money']){//如果单子总金额 大于 商家余额, 不能发单
                     $this->error('余额不足!请充值!');
                 }
-                //如果余额充足,扣除商户金额
-                $store->setDec('money',$total);
-                //增加已发布单数
-                $store->setInc('total_order',$params['order_num']);
+
                 if ($this->dataLimit && $this->dataLimitFieldAutoFill) {
                     $params[$this->dataLimitField] = $this->auth->id;
                 }
@@ -249,19 +257,19 @@ class Order extends Backend
             $this->success('此单已撤销,请勿重复撤单!');
         }
         $this->model->startTrans();
-        if ( $order['status'] != '2' ){
-            $total = ($order['broker'] + $order['goods_repPrice']) * $order['order_num'];
-            $res = Admin::where('id',$order['shop_id'])->setInc('money',$total);
-            Admin::where('id',$order['shop_id'])->setDec('total_order',$order['order_num']);
-        }else{
-            //2,如果状态是2 说明审核通过发布了,先返回未被接单的子订单金额 (然后在 收回订单接口中返回订单金额给商家, 刷手已提交的订单不可以撤单)
+        if ( $order['status'] == '2' ){
+            //2,如果状态是2 说明审核通过发布了扣商家钱了,先返回未被接单的子订单金额 (然后刷手已接单的单子,会在提交的时候打断提交,并返回给商户钱)
             $last_num = OrderItem::where(['order_id'=>$order['id'],'brush_id' => 0])->count();
             $total = ($order['broker'] + $order['goods_repPrice']) * $last_num??0;
             $res = Admin::where('id',$order['shop_id'])->setInc('money',$total);
             Admin::where('id',$order['shop_id'])->setDec('total_order',$last_num);
+            //如果状态不=2, 说明平台没有审核通过并发布此订单,没有扣款不需要返款
         }
         $order->status = '4';
         $order->save();
+        $admins = Admin::get($order['shop_id']);
+        //商家财务记录
+        admin_record($order['shop_id'],2,$total,$admins->money,$admins->nickname);
         $this->model->commit();
         if ($res){
             //给管理员后台发送一个订单提醒

@@ -224,3 +224,27 @@ EOT;
         return $icon;
     }
 }
+
+if (!function_exists('admin_record')) {
+
+    /**
+     * 商家财务记录表
+     * @param int $admin_id  商家id
+     * @param string  $money  记录金额
+     * @param int  $type 记录类型:1=发单扣款,2=撤单返款,3=充值,4=提现,5=平台操作
+     * @param string $admin_money 记录创建时商家余额
+     * @param string $admin_name 商家名字
+     */
+    function admin_record($admin_id,$type,$money,$admin_money,$admin_name)
+    {
+        $par = [
+            'admin_id' => $admin_id,
+            'type' => $type,
+            'money' => $money,
+            'admin_money' => $admin_money,
+            'admin_name' => $admin_name,
+            'ctime' => time()
+        ];
+        Db::name('admin_record')->insertGetId($par);
+    }
+}

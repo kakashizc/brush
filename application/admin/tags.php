@@ -15,4 +15,7 @@ return [
     'app_end'      => [
         'app\\admin\\behavior\\AdminLog',
     ],
+    'finance' => [
+        'app\\admin\\behavior\\Finance'
+    ]
 ];
