@@ -149,10 +149,13 @@ class OrderBrush extends Backend
             if ($border->act_money >= $base->goods_repPrice){
                 $moy = $base->goods_repPrice;
             }else{
-                //TODO 如果单子本金是100元, 刷手提交任务是 90元(小于单子金额), 那么返本金是90, 剩余10元还返给平台,并添加一条商户的财务记录
+                //如果单子本金是100元, 刷手提交任务是 90元(小于单子金额), 那么返本金是90, 剩余10元还返给平台,并添加一条商户的财务记录
                 $extra_money = $base->goods_repPrice - $border->act_money;
                 Db::name('admin')->where('id',$border->admin_id)->setInc('money',$extra_money);
                 $moy = $border->act_money;
+                //增加一条商户财务记录
+                $admins = \app\admin\model\Admin::get($border->admin_id);
+                admin_record($border->admin_id,'7',$extra_money,$admins->money,$admins->nickname);
             }
             Brush::where(['id'=>$border->brush_id])->setInc('money',$moy);
             Brush::where(['id'=>$border->brush_id])->setInc('total',$moy);//给刷手总额增加

@@ -631,6 +631,10 @@ class Order extends Api
                     Admin::where('id',$order['shop_id'])->setDec('total_order',1);
                     //3,插入一条限制记录 记录已经给商家返过钱了, 防止恶意刷接口 多次返钱
                     Db::name('limit')->insertGetId($where);
+                    //插入一条商家财务记录
+                    //增加一条充值记录
+                    $admins = \app\admin\model\Admin::get($order['shop_id']);
+                    admin_record($order['shop_id'],'6',$total,$admins->money,$admins->nickname);
                 }
                 Db::commit();
                 $this->success('商家已撤单','',$code);
