@@ -173,6 +173,9 @@ class Reback extends Backend
                     //如果状态是'2', 那么提现审核通过,将用户余额减少对应的数值
                     if($params['status'] == '2'){
                         Db::name('admin')->where('id',$row->admin_id)->setDec('money',$row->money);
+                        //添加一条 提现记录
+                        $admins = \app\admin\model\Admin::get($row->admin_id);
+                        admin_record($row->admin_id,'4',$row->money,$admins->money,$admins->nickname);
                     }
                     $result = $row->allowField(true)->save($params);
                     Db::commit();

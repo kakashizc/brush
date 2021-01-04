@@ -169,9 +169,12 @@ class Recharge extends Backend
                         Db::rollback();
                         $this->error('不可重复审核');
                     }
-                    //如果状态是'2', 那么提现审核通过,将用户余额减少对应的数值
+                    //如果状态是'2', 那么充值申请通过,将用户余额增加对应的数值
                     if($params['status'] == '2'){
                         Db::name('admin')->where('id',$row->admin_id)->setInc('money',$row->money);
+                        //增加一条充值记录
+                        $admins = \app\admin\model\Admin::get($row->admin_id);
+                        admin_record($row->admin_id,'3',$row->money,$admins->money,$admins->nickname);
                     }
                     $result = $row->allowField(true)->save($params);
                     Db::commit();
