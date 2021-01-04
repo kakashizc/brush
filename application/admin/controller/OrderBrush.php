@@ -143,12 +143,15 @@ class OrderBrush extends Backend
             }
             //2,走到这里, 订单类型肯定是垫付,返给刷手本金
             $base = Order::get($border->order_id);//查询此订单的垫付价格
-            //返本金机制: 如果单子本金是100元, 刷手提交任务是 90元(小于单子金额), 那么返本金是90
+            //返本金机制: 如果单子本金是100元, 刷手提交任务是 90元(小于单子金额), 那么返本金是90, 剩余10元还返给平台
             //如果刷手提交的金额大于100 , 那么返100
             $moy = 0;
             if ($border->act_money >= $base->goods_repPrice){
                 $moy = $base->goods_repPrice;
             }else{
+                //TODO 如果单子本金是100元, 刷手提交任务是 90元(小于单子金额), 那么返本金是90, 剩余10元还返给平台,并添加一条商户的财务记录
+                $extra_money = $base->goods_repPrice - $border->act_money;
+                Db::name('admin')->where('id',$border->admin_id)->setInc('money',$extra_money);
                 $moy = $border->act_money;
             }
             Brush::where(['id'=>$border->brush_id])->setInc('money',$moy);

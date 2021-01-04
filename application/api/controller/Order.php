@@ -65,7 +65,7 @@ class Order extends Api
         $orderId = $this->request->param('order_id');
         $is = Db::name('order')->find($orderId);
         if ($is['status'] == '4'){
-            $this->shop_backs($orderId);
+            $this->shop_backs($orderId,6);
         }
         //查看是否已接此单
         $is = OrderItem::where(['order_id'=>$orderId,'brush_id'=>$this->_uid])->find();
@@ -604,6 +604,9 @@ class Order extends Api
     private function shop_backs($orderid,$code = null)
     {
         $code = $code?$code:'1';
+        if($code == 6){//说明是点击接单的时候, 商家已经撤单了,直接返回就行
+            $this->success('商家已撤单','','5');
+        }
         $uid = $this->_uid;
         $order = OrderModel::get($orderid);
         $item = OrderItem::get(['order_id'=>$orderid,'brush_id' => $uid]);
