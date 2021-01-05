@@ -114,7 +114,7 @@ class Order extends Backend
                 //商家余额
                 $admins = Admin::get($order['shop_id']);
                 //增加一条 财务记录
-                admin_record($order['shop_id'],1,$total,$admins->money,$admins->nickname);
+                admin_record($order['shop_id'],1,'-'.$total,$admins->money,$admins->nickname);
                 $this->model->commit();
                 $this->success('任务发布成功','order/index');
             }else{
@@ -269,7 +269,7 @@ class Order extends Backend
         $order->save();
         $admins = Admin::get($order['shop_id']);
         //商家财务记录
-        admin_record($order['shop_id'],2,$total,$admins->money,$admins->nickname);
+        admin_record($order['shop_id'],2,'+'.$total,$admins->money,$admins->nickname);
         $this->model->commit();
         if ($res){
             //给管理员后台发送一个订单提醒

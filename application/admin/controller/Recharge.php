@@ -174,7 +174,7 @@ class Recharge extends Backend
                         Db::name('admin')->where('id',$row->admin_id)->setInc('money',$row->money);
                         //增加一条充值记录
                         $admins = \app\admin\model\Admin::get($row->admin_id);
-                        admin_record($row->admin_id,'3',$row->money,$admins->money,$admins->nickname);
+                        admin_record($row->admin_id,'3','+'.$row->money,$admins->money,$admins->nickname);
                     }
                     $result = $row->allowField(true)->save($params);
                     Db::commit();

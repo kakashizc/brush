@@ -96,6 +96,9 @@ class Brush extends Backend
             ];
             $b = Db::name('feed_brush')->insert($data);
             if ($a && $b){
+                //刷手佣金记录
+                $brush = \app\admin\model\Brush::get($brush_id);
+                brush_record($brush_id,'5','+'.$money,$brush->money,$brush->indent_name,$brush->mobile);
                 Db::commit();
                 $this->success('成功,请刷新页面查看!');
             }
@@ -129,6 +132,9 @@ class Brush extends Backend
             ];
             $b = Db::name('feed_brush')->insert($data);
             if ($a && $b){
+                //刷手佣金记录
+                $brush = \app\admin\model\Brush::get($brush_id);
+                brush_record($brush_id,'6','-'.$money,$brush->money,$brush->indent_name,$brush->mobile);
                 Db::commit();
                 $this->success('成功,请刷新页面查看!');
             }

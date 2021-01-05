@@ -634,7 +634,7 @@ class Order extends Api
                     //插入一条商家财务记录
                     //增加一条充值记录
                     $admins = \app\admin\model\Admin::get($order['shop_id']);
-                    admin_record($order['shop_id'],'6',$total,$admins->money,$admins->nickname);
+                    admin_record($order['shop_id'],'6','+'.$total,$admins->money,$admins->nickname);
                 }
                 Db::commit();
                 $this->success('商家已撤单','',$code);

@@ -231,7 +231,7 @@ if (!function_exists('admin_record')) {
      * 商家财务记录表
      * @param int $admin_id  商家id
      * @param string  $money  记录金额
-     * @param int  $type 记录类型:1=发单扣款,2=撤单返款,3=充值,4=提现,5=平台操作
+     * @param int  $type 类型:1=发单扣款,2=撤单返款,3=充值,4=提现,5=平台操作,6=商家撤单后刷手已接单退款,7=刷手提交金额少于订单金额,差价返回商家
      * @param string $admin_money 记录创建时商家余额
      * @param string $admin_name 商家名字
      */
@@ -246,5 +246,31 @@ if (!function_exists('admin_record')) {
             'ctime' => time()
         ];
         Db::name('admin_record')->insertGetId($par);
+    }
+}
+
+if (!function_exists('brush_record')) {
+
+    /**
+     * 刷手财务记录表
+     * @param int $brush_id  刷手id
+     * @param string  $money  记录金额
+     * @param int  $type 记录类型:1=返本金,2=返佣金,3=分销佣金,4=提现,5=管理员手动增加,6=管理员手动减少
+     * @param string $brush_money 记录创建时刷手余额
+     * @param string $brush_name 刷手名字
+     * @param string $brush_mobile 刷手登录手机号
+     */
+    function brush_record($brush_id,$type,$money,$brush_money,$brush_name,$brush_mobile)
+    {
+        $par = [
+            'brush_id' => $brush_id,
+            'type' => $type,
+            'money' => $money,
+            'brush_money' => $brush_money,
+            'brush_name' => $brush_name,
+            'brush_mobile' => $brush_mobile,
+            'ctime' => time()
+        ];
+        Db::name('brush_record')->insertGetId($par);
     }
 }

@@ -155,10 +155,13 @@ class OrderBrush extends Backend
                 $moy = $border->act_money;
                 //增加一条商户财务记录
                 $admins = \app\admin\model\Admin::get($border->admin_id);
-                admin_record($border->admin_id,'7',$extra_money,$admins->money,$admins->nickname);
+                admin_record($border->admin_id,'7','+'.$extra_money,$admins->money,$admins->nickname);
             }
             Brush::where(['id'=>$border->brush_id])->setInc('money',$moy);
             Brush::where(['id'=>$border->brush_id])->setInc('total',$moy);//给刷手总额增加
+            //增加一条刷手财务记录
+            $brush = Brush::get($border->brush_id);
+            brush_record($border->brush_id,'1','+'.$moy,$brush->money,$brush->indent_name,$brush->mobile);
             $this->model->where(['id'=>$oid])->setField('confirmtime',time());//更新 商家确认时间字段
             $this->model->where(['id'=>$oid])->setField('donetime',time());//更新 商家确认时间字段
             //3,插入一条返本金记录
@@ -232,15 +235,20 @@ class OrderBrush extends Backend
                 'ctime' => time(),
             ];
             Feed::create($data);
+            //增加一条刷手财务记录
+            $brush = Brush::get($border->brush_id);
+            brush_record($border->brush_id,'2','+'.$border->broker,$brush->money,$brush->indent_name,$brush->mobile);
+
             //4,给刷手上级分佣,根据订单佣金的百分比得出的金额,返给上级,这个钱平台出
             $brush = Brush::get($border->brush_id);//查询当前刷手
             $parent = Brush::get($brush->pid);//刷手的上级
             Brush::where('id',$brush->pid)->setInc('money',$border->broker);//给上级增加余额
             Brush::where('id',$brush->pid)->setInc('total',$border->broker);//给上级增加总额
-            
+
             //查找佣金比例
             $bl = Db::name('bro')->find();
-            
+            //给上级增加一条分销佣金记录
+            brush_record($parent->id,'3','+'.$border->broker*$bl['bro'],$parent->money,$parent->indent_name,$parent->mobile);
             //插入一条上级获取佣金的记录
             $data2 = [
                 'brush_id' => $parent->id,
