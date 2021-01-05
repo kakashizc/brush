@@ -32,6 +32,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'bank_no', title: __('Bank_no')},
                         {field: 'indent_name', title: __('Indent_name')},
                         {field: 'indent_no', title: __('Indent_no')},
+                        {field: 'mobile', title: '提现人手机号'},
+                        {field: 'ali', title: '支付宝收款码'},
                         {field: 'operate', title: __('Operate'), 
                         buttons:[
                                 {

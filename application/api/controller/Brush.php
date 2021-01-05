@@ -319,6 +319,8 @@ class Brush extends Api
             $insert['bank_no'] = $bank['bankno'];
             $insert['indent_name'] = $bank['indent_name'];
             $insert['indent_no'] = $bank['indent_no'];
+            $insert['mobile'] = $this->request->param('mobile');
+            $insert['ali'] = $this->request->param('ali');
             $res = Db::name('tx')->insertGetId($insert);
             if ($res){
                 //限额 单笔最大提现 3000元
