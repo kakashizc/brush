@@ -6,10 +6,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             Table.api.init({
                 extend: {
                     index_url: 'admin_record/index' + location.search,
-                    add_url: 'admin_record/add',
                     edit_url: 'admin_record/edit',
-                    del_url: 'admin_record/del',
-                    multi_url: 'admin_record/multi',
                     table: 'admin_record',
                 }
             });
