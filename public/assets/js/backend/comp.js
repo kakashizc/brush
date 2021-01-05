@@ -38,6 +38,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'admin.nickname', title: __('Admin.nickname')},
                         {field: 'brush.indent_name', title: __('Brush.name')},
                         {field: 'brush.mobile', title: __('Brush.mobile')},
+                        {field: 'brush.qq', title: 'qq号'},
+                        {field: 'brush.wechat', title: '微信号'},
                         {field: 'orderbrush.act_no', title: '订单号'},
                         {field: 'orderbrush.shop_name', title: __('Orderbrush.shop_name')},
                         {field: 'complain.title', title: __('Complain.title')},
