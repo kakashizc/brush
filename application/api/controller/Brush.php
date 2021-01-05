@@ -256,6 +256,8 @@ class Brush extends Api
         $up = [];
         $up['indent_name'] = $this->request->param('indent_name');
         $up['indent_no'] = $this->request->param('indent_no');
+        $up['qq'] = $this->request->param('qq');
+        $up['wechat'] = $this->request->param('wechat');
         $up['front_image'] = $this->request->param('front');
         $up['back_image'] = $this->request->param('back');
         $up['keep_image'] = $this->request->param('keep');
