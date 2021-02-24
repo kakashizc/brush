@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use app\common\controller\Backend;
+use app\common\controller\Redis;
 use app\common\controller\sendMsg;
 use think\Db;
 use think\Exception;
@@ -27,7 +28,7 @@ class Order extends Backend
      */
     protected $model = null;
     protected $noNeedRight = ['*'];
-    
+    private $_redis;
     public function _initialize()
     {
         parent::_initialize();
@@ -36,6 +37,7 @@ class Order extends Backend
         $this->view->assign("typeList", $this->model->getTypeList());
         $this->view->assign("baseTypeList", $this->model->getBaseTypeList());
         $this->view->assign("broTypeList", $this->model->getBroTypeList());
+        $this->_redis = Redis::getInstance()->getRedisConn();
     }
     
     /**
@@ -116,6 +118,8 @@ class Order extends Backend
                 //增加一条 财务记录
                 admin_record($order['shop_id'],1,'-'.$total,$admins->money,$admins->nickname);
                 $this->model->commit();
+                //存入redis一份,提供给抢单的人用
+                $this->_redis->lPush('order_wait_list',$id);//存入redis后, TODO 抢单的时候查看此订单是否还有单子,如果没有了 就清除此id
                 $this->success('任务发布成功','order/index');
             }else{
                 $this->model->rollback();

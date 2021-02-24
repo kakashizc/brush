@@ -3,7 +3,7 @@
 namespace app\common\controller;
 
 //redis单利类
-class Red
+class Redis
 {
     private static $instance;
     private $redis;
@@ -17,10 +17,10 @@ class Red
     }
 
     //构造方法私有化，防止外部创建实例
-    public function __construct(){
+    private function __construct(){
         $this->redis = new \Redis();
         $this->redis->connect('127.0.0.1','6379');
-        $this->redis->setOption(\Redis::OPT_READ_TIMEOUT,-1);
+        //$this->redis->setOption(\Redis::OPT_READ_TIMEOUT,-1);
     }
     //克隆方法私有化，防止复制实例
     private function __clone(){

@@ -53,7 +53,65 @@ class Order extends Api
         }
     }
 
+    /*
+    * 刷手点击 开始接单
+    * 1,从redis order_wait_list 列表中 取出一个订单id
+    * 2,查询此订单 是否还有子订单可以推,如果没有了, 就从队列中删除此id
+    * 3,如果还有订单 , 就推送给一个, 刷手点击接单正常走流程
+    * */
+    public function ready()
+    {
+        $ret = $this->_redis->rpop('order_wait_list');
+        if ( !$ret ){
+            $this->success('暂无订单','','1');
+        }
 
+        //查询刷手是否接过此订单了,如果接过就不再推送了,并且返回给redis
+        $is = OrderItem::where(['order_id'=>$ret,'brush_id'=>$this->_uid])->find();
+        if ($is){
+            $this->_redis->lpush('order_wait_list',$ret);
+            $this->success('暂无订单','','1');
+        }
+
+        //1,查询此订单 是否还有子订单可以推,如果没有了,就不用管了, 已经从队列中删除了, 如果有查询订单返回给刷手
+        $list = OrderItem::where(['order_id'=>$ret,'brush_id'=>0])->select();
+        if (sizeof($list) >= 1){
+            //有订单 可以推给用户一个
+            $data = $this->pre($ret);
+            if($data){
+                $this->success('成功',$data,'0');
+            }else{
+                $this->success('无订单','','1');
+            }
+        }else{
+            $this->success('暂无订单','','1');
+        }
+    }
+
+    private function pre($orderId)
+    {
+        $order = OrderModel::with('admin')->where(function($query) use ($orderId){
+            $query->where('order.id',$orderId);
+        })->find();
+        if ($order){
+            $data = [
+                "id" => $order->id,
+                "keywords" => $order->keywords,
+                "goods_ame" => $order->goods_ame,
+                "goods_price" => $order->goods_price,
+                "goods_repPrice" => $order->goods_repPrice,
+                "goods_sku" => $order->goods_sku,
+                "goods_num" => $order->goods_num,
+                "goods_image" => IMG.$order->goods_image,
+                "shop_desc" => $order->shop_desc,
+                "shopname" => tostar($order->act_sname),
+            ];
+            return $data;
+        }else{
+            return false;
+        }
+
+    }
 
     /*
      * 刷手点击接单
@@ -63,6 +121,15 @@ class Order extends Api
     public function doMission()
     {
         $orderId = $this->request->param('order_id');
+        $type =  $this->request->param('type');
+        if ( isset($type) && $type == 1){ //如果刷手点击抢单以后 , 查询是否还有子订单 , 如果有就把id 再存入redis队列
+            $is_last = OrderItem::where(['order_id'=>$orderId,'brush_id'=>0])->select();
+            if (sizeof($is_last) >= 1){
+                //此订单 还有子订单, 继续存入redis
+                $this->_redis->lpush('order_wait_list',$orderId);
+            }
+        }
+
         $is = Db::name('order')->find($orderId);
         if ($is['status'] == '4'){
             $this->shop_backs($orderId,6);
@@ -125,7 +192,7 @@ class Order extends Api
         $this->success('任务不存在或任务已抢完','','1');
     }
 
-    /*
+    /* TODO 一个后台商户 有不同的店铺, 这点后期还需要区分
      * 是否可以接同一个商户订单
      * 同店铺不同商品半个月一次，同店铺同商品一个月一次
      * */

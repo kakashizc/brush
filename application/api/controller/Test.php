@@ -10,6 +10,7 @@ namespace app\api\controller;
 
 
 use app\admin\model\BrushPlat;
+use app\admin\model\Order;
 use app\admin\model\Order as OrderModel;
 use app\admin\model\OrderItem;
 use app\admin\model\OrderBrush;
@@ -28,9 +29,16 @@ class Test extends Api
     public function _initialize()
     {
         parent::_initialize();
-//        $this->_redis = new \Redis();
-//        $this->_redis->connect('127.0.0.1','6379');
+        $this->_redis = new \Redis();
+        $this->_redis->connect('127.0.0.1','6379');
     }
+
+    public function ready()
+    {
+        $ret = $this->_redis->rpop('order_wait_list');
+        echo $ret;
+    }
+
 
     /*
      * 大厅->点击接单->随机获取几个符合刷手条件的订单展示出来
