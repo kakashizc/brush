@@ -61,16 +61,14 @@ class Order extends Api
     * */
     public function ready()
     {
-        $ret = $this->_redis->rpop('order_wait_list');
+        list($ret) = $this->_redis->lrange('order_wait_list',-1,-1);
         if ( !$ret ){
             $this->success('暂无订单','','1');
         }
-
         //查询刷手是否接过此订单了,如果接过就不再推送了,并且返回给redis
         $is = OrderItem::where(['order_id'=>$ret,'brush_id'=>$this->_uid])->find();
         if ($is){
-            $this->_redis->lpush('order_wait_list',$ret);
-            $this->success('暂无订单','','1');
+            $this->success('暂无您的订单','','1');
         }
 
         //1,查询此订单 是否还有子订单可以推,如果没有了,就不用管了, 已经从队列中删除了, 如果有查询订单返回给刷手
@@ -114,6 +112,14 @@ class Order extends Api
     }
 
     /*
+     * 刷手拒绝推送的订单
+     * */
+    public function refuse()
+    {
+        $this->success('已拒绝','','0');
+    }
+
+    /*
      * 刷手点击接单
      * 1,根据主订单号,分配给此刷手一个子订单
      * 2,返回订单拼装数据
@@ -121,15 +127,6 @@ class Order extends Api
     public function doMission()
     {
         $orderId = $this->request->param('order_id');
-        $type =  $this->request->param('type');
-        if ( isset($type) && $type == 1){ //如果刷手点击抢单以后 , 查询是否还有子订单 , 如果有就把id 再存入redis队列
-            $is_last = OrderItem::where(['order_id'=>$orderId,'brush_id'=>0])->select();
-            if (sizeof($is_last) >= 1){
-                //此订单 还有子订单, 继续存入redis
-                $this->_redis->lpush('order_wait_list',$orderId);
-            }
-        }
-
         $is = Db::name('order')->find($orderId);
         if ($is['status'] == '4'){
             $this->shop_backs($orderId,6);
@@ -182,6 +179,11 @@ class Order extends Api
                 $str = $item->id.'_'.$this->_uid.'_'.'delay';
                 $second = 1800;//30分钟*60秒 = 1800秒,如果此时间内未有动作 订单自动回收
                 $this->_redis->setex($str,$second, "pay");
+                //判断此订单的子订单是否 已接完, 接完的话就清空redis
+                $is_last = OrderItem::where(['order_id'=>$orderId,'brush_id'=>0])->select();
+                if (sizeof($is_last) <= 0){
+                    $this->_redis->lRem('order_wait_list',$orderId,'0');
+                }
                 Db::commit();
                 $this->success('接单成功',$orderInfo,'0');
             }
@@ -564,6 +566,7 @@ class Order extends Api
     public function isget()
     {
         $orderId = $this->request->param('order_id');
+
          //先查看是否实名认证通过了
         $userinfo = Db::name('brush')->find($this->_uid);
         if ($userinfo['status'] != '2'){

@@ -18,6 +18,7 @@ class Index extends Api
 {
     protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
+
     /*
      * 版本信息
      * */
