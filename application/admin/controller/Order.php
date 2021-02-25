@@ -71,6 +71,7 @@ class Order extends Backend
         $params = $this->request->param();
         $id = $params['id'];
         $act_bro = $params['act_bro'];
+        if (!is_numeric($act_bro))$this->error('错误的金额');
         $this->publish($id,$act_bro);
     }
 
