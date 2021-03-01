@@ -6,10 +6,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             Table.api.init({
                 extend: {
                     index_url: 'admin_money/index' + location.search,
-                    add_url: 'admin_money/add',
-                    edit_url: 'admin_money/edit',
-                    del_url: 'admin_money/del',
-                    multi_url: 'admin_money/multi',
+                    
                     table: 'admin_money',
                 }
             });
