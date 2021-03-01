@@ -50,9 +50,9 @@ class AdminMoney extends Backend
             }
             $adminId = $this->auth->id;
             if ($adminId == 1) {
-                $where1 = [];
+                $where1 = [];//如果是管理员,看所有商户余额
             }else{
-                $where1 = ['admin_id'=>$adminId];
+                $where1 = ['admin_id'=>$adminId];//如果是某个商家, 只能看自己的
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
