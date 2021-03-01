@@ -67,15 +67,20 @@ class Index extends Backend
         //商家提交任务,待管理员审核发布的数
         $orders = Db::name('order')->where('status','1')->count();
         $adminId = $this->auth->id;
+        //商家余额
+        $moneys = Db::name('admin')->where('id',$adminId)->value('money');
         if ($adminId == 1){
             return [
                 'auth'=>[$shop,'red','badge'],
                 'tousu'=>[$comp,'red','badge'],
                 'ssww'=>[$orders,'red','badge'],
-                'order'=>[$orders,'blue','label']
+                'order'=>[$orders,'blue','label'],
+                'admin_money'=>[$moneys,'red','label']
             ];
         }else{
-            return [];
+            return [
+                'admin_money'=>[$moneys,'red','label']
+            ];
         }
     }
     /**

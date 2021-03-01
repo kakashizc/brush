@@ -7,6 +7,7 @@ use app\admin\model\AuthGroupAccess;
 use app\common\controller\Backend;
 use fast\Random;
 use fast\Tree;
+use think\Db;
 use think\Validate;
 
 /**
@@ -141,6 +142,8 @@ class Admin extends Backend
                 foreach ($group as $value) {
                     $dataset[] = ['uid' => $this->model->id, 'group_id' => $value];
                 }
+                //加入一个admin_money
+                Db::name('admin_money')->insert(['admin_id'=>$this->model->id]);
                 model('AuthGroupAccess')->saveAll($dataset);
                 $this->success();
             }
