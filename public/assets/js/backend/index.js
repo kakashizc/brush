@@ -344,6 +344,45 @@ define(['jquery', 'bootstrap', 'backend', 'addtabs', 'adminlte', 'form'], functi
 
             }
 
+            //一级菜单 角标提醒
+            var ajax;
+            var admin_money = $("[addtabs='310']").html();//商家余额 admin_money
+            var auth = $("[addtabs='5']").html();//auth 商户管理 -- 提现申请和充值申请
+            var tousu = $("[addtabs='258']").html();//申诉
+            var order = $("[addtabs='260']").html();//商家提交任务,待管理员审核发布的数
+            function siderbar(){
+                setTimeout(6000)
+                if (ajax){
+                    ajax.abort()
+                }
+                //获取当前管理员登录信息(暂时不用)
+                //var a =  JSON.parse(window.localStorage.getItem('lastlogin'))
+                $.ajax({
+                    url:'ajax/siderbar',
+                    type:'get',
+                    success:function (ret) {
+                        console.log(ret)
+                        if (ret.code == 1){
+                            console.log('开启定时刷新'+ret.code)
+                            if (a.id == 1){
+                                $("[addtabs='260']").html(order+ '<span class="pull-right-container"><small class="label pull-right bg-red">'+ret.data.order[0]+'</small></span>')
+                                $("[addtabs='5']").html(auth+ '<span class="pull-right-container"><small class="label pull-right bg-red">'+ret.data.auth[0]+'</small></span>')
+                                $("[addtabs='258']").html(tousu+ '<span class="pull-right-container"><small class="label pull-right bg-red">'+ret.data.tousu[0]+'</small></span>')
+                            }else{
+                                $("[addtabs='310']").html(admin_money+ '<span class="pull-right-container"><small class="label pull-right bg-red">'+ret.data.admin_money[0]+'</small></span>')
+
+                            }
+                        }else{
+                            console.log('关闭定时器')
+                            clearInterval(siderbar_time);
+                        }
+                    }
+                })
+
+            }
+            siderbar()
+            siderbar_time = setInterval(siderbar,5000);
+
             $(window).resize();
 
         },

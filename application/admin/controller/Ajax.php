@@ -48,6 +48,34 @@ class Ajax extends Backend
         return jsonp(Lang::get(), 200, [], ['json_encode_param' => JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE]);
     }
 
+    /*
+     * 刷新角标
+     * */
+    public function siderbar()
+    {
+        //获取需要提醒的角标数据
+        //商家提现-充值提醒数
+        $reback = Db::name('reback')->where('status','1')->count();
+        $recharge = Db::name('recharge')->where('status','1')->count();
+        $shop = $reback+$recharge;
+        //投诉未审核的订单数量
+        $comp = Db::name('comp')->where('status','1')->count();
+        //商家提交任务,待管理员审核发布的数
+        $orders = Db::name('order')->where('status','1')->count();
+        $adminId = $this->auth->id;
+        //商家余额
+        $moneys = Db::name('admin')->where('id',$adminId)->value('money');
+
+        $this->success('ok','',[
+            'auth'=>[$shop,'red','badge'],
+            'tousu'=>[$comp,'red','badge'],
+            'order'=>[$orders,'blue','label'],
+            'admin_money'=>[$moneys,'red','label']
+        ]);
+
+    }
+
+
     /**
      * 上传文件
      */

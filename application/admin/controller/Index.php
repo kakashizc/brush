@@ -69,6 +69,7 @@ class Index extends Backend
         $adminId = $this->auth->id;
         //商家余额
         $moneys = Db::name('admin')->where('id',$adminId)->value('money');
+        return [];
         if ($adminId == 1){
             return [
                 'auth'=>[$shop,'red','badge'],
