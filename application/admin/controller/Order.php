@@ -54,6 +54,8 @@ class Order extends Backend
         //1,更改订单状态为 已发布待审核
         $ret = $this->model->where('id',$orderid)->setField('status','1');
         if ($ret){
+            $send = new sendMsg();
+            $send->send('有新的商家发单,请及时审核!');
             $this->success('成功','',$orderid);
         }else{
             $this->error('提交失败','',$orderid);
@@ -117,7 +119,7 @@ class Order extends Backend
                 //商家余额
                 $admins = Admin::get($order['shop_id']);
                 //增加一条 财务记录
-                admin_record($order['shop_id'],1,'-'.$total,$admins->money,$admins->nickname);
+                admin_record($order['shop_id'],'1','-'.$total,$admins->money,$admins->nickname);
                 $this->model->commit();
                 //存入redis一份,提供给抢单的人用
                 $this->_redis->lPush('order_wait_list',$id);//存入redis后, TODO 抢单的时候查看此订单是否还有单子,如果没有了 就清除此id
@@ -269,12 +271,14 @@ class Order extends Backend
             $res = Admin::where('id',$order['shop_id'])->setInc('money',$total);
             Admin::where('id',$order['shop_id'])->setDec('total_order',$last_num);
             //如果状态不=2, 说明平台没有审核通过并发布此订单,没有扣款不需要返款
+        }else{
+            $total = ($order['broker'] + $order['goods_repPrice']) * $order['order_num'];
         }
         $order->status = '4';
-        $order->save();
+        $res = $order->save();
         $admins = Admin::get($order['shop_id']);
         //商家财务记录
-        admin_record($order['shop_id'],2,'+'.$total,$admins->money,$admins->nickname);
+        admin_record($order['shop_id'],'2','+'.$total,$admins->money,$admins->nickname);
         $this->model->commit();
         if ($res){
             //给管理员后台发送一个订单提醒

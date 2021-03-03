@@ -41,7 +41,18 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'total_money', title: '已放单总金额'},
                         {field: 'guarantee', title: '保证金'},
                         {field: 'logintime', title: __('Login time'), formatter: Table.api.formatter.datetime, operate: 'RANGE', addclass: 'datetimerange', sortable: true},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: function (value, row, index) {
+                        {field: 'operate', title: __('Operate'),
+                            buttons:[
+                                {
+                                    name: 'detail',
+                                    text: '扣款',
+                                    title: '扣款',
+                                    classname: 'btn btn-xs btn-warning test',
+                                    icon: 'fa fa-address-book-o',
+
+                                }
+                            ],
+                            table: table, events: Table.api.events.operate, formatter: function (value, row, index) {
                                 if(row.id == Config.admin.id){
                                     return '';
                                 }
@@ -53,6 +64,40 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
             // 为表格绑定事件
             Table.api.bindevent(table);
+
+            $(document).on("click", ".test", function () {
+                var options = table.bootstrapTable('getSelections');
+                var ids = options[0].ids
+                return Layer.alert('请输入扣款金额', {
+                    content: Template("logintpl", {}),
+                    zIndex: 99,
+                    area: ['430px', '180px'],
+                    resize: false,
+                    title: '确定?',
+                    btn: ['确定扣款','取消'],
+                    yes: function (index, layero) {
+                        Fast.api.ajax({
+                            url: 'auth/admin/do_kou',
+                            // dataType: 'jsonp',
+                            data: {
+                                act_bro: $("#inputAccount", layero).val(),
+                                id: ids
+                            }
+                        }, function (data, ret) {
+                            Layer.alert(ret.msg);
+                            $(".btn-refresh").trigger('click')
+                        }, function (data, ret) {
+                            Layer.closeAll();
+                            Layer.alert(ret.msg);
+                            return false;
+                        });
+
+                    },
+                    btn2: function (index) {
+                        layer.close(index);
+                    }
+                });
+            });
         },
         add: function () {
             Form.api.bindevent($("form[role=form]"));

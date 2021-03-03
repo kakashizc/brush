@@ -361,9 +361,9 @@ define(['jquery', 'bootstrap', 'backend', 'addtabs', 'adminlte', 'form'], functi
                     url:'ajax/siderbar',
                     type:'get',
                     success:function (ret) {
-                        console.log(ret)
+                        //console.log(ret)
                         if (ret.code == 1){
-                            console.log('开启定时刷新'+ret.code)
+                            //console.log('开启定时刷新'+ret.code)
                             if (a.id == 1){
                                 $("[addtabs='260']").html(order+ '<span class="pull-right-container"><small class="label pull-right bg-red">'+ret.data.order[0]+'</small></span>')
                                 $("[addtabs='5']").html(auth+ '<span class="pull-right-container"><small class="label pull-right bg-red">'+ret.data.auth[0]+'</small></span>')

@@ -129,6 +129,10 @@ class OrderBrush extends Backend
         if ( $mulid && ($border['back'] == '2' || $border['back'] == '4')){
             return false;//如果是批量返本金 并且 订单状态为已返本金,直接返回
         }
+        if ( $border['back'] == '2' || $border['back'] == '4'){
+            //说明已经返本金了,不再重复操作
+            $this->success('已返,不可重复操作!');exit;
+        }
         $this->model->startTrans();
         try{
             //1,修改刷手订单表状态
@@ -203,6 +207,10 @@ class OrderBrush extends Backend
         $border = $this->model->get($oid);
         if ( $mulid && ($border['back'] == '3' || $border['back'] == '4')){
             return false;//如果是批量返佣金 并且 订单状态为已返佣金,直接返回
+        }
+        if ( $border['back'] == '3' || $border['back'] == '4'){
+            //说明已经返佣金了,不再重复操作
+            $this->success('已返,不可重复操作!');
         }
         $this->model->startTrans();
         try{

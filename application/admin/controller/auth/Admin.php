@@ -60,6 +60,22 @@ class Admin extends Backend
         $this->view->assign('groupdata', $groupdata);
         $this->assignconfig("admin", ['id' => $this->auth->id]);
     }
+    /*
+     * 商家扣款
+     * */
+    public function do_kou()
+    {
+        $params = $this->request->param();
+        $id = $params['id'];
+        $act_bro = $params['act_bro'];
+        if (!is_numeric($act_bro))$this->error('错误的金额');
+        Db::name('admin')->where('id',$id)->setDec('money',$act_bro);
+        $act_bro = '-'.$act_bro;
+        $now = \app\admin\model\Admin::get($id);
+        admin_record($id,'5',$act_bro,$now->money,$now->nickname);
+        $this->success('扣款成功');
+    }
+
 
     /**
      * 查看
