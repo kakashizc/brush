@@ -485,6 +485,7 @@ class Order extends Api
                 $ret['comp']['act_money'] = $datas['act_money'];
                 $ret['comp']['order_money'] = $orderInfo['goods_repPrice'];
                 $ret['comp']['say'] = $datas['comps']['say'];
+                $ret['comp']['feed'] = $datas['comps']['feed'];
             }
             
             $ret['plat_name'] = $orderInfo['plat']['name'];

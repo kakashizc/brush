@@ -377,8 +377,25 @@ class Brush extends Api
         $ret['admin'] = $adrecord;
         $this->success('成功',$ret,'0');
     }
-    
-    
+
+    /*
+     * 轮询, 查找用户是否有 新的被管理员审核的申诉订单
+     * 如果有 就返回 管理员的申诉内容
+     * */
+    public function shensu()
+    {
+        $uid = $this->_uid;
+        $ret = \app\admin\model\Comp::get(['brush_id'=>$uid,'check'=>0]);
+        if($ret){//如果存在,就查询订单信息 和 回复信息 一并返回
+            $order = OrderBrush::get(['id'=>$ret->orderbrush_id]);
+            $ret->check = 1;
+            $re = $ret->save();
+            if ($re) $this->success('您有一个申诉订单商家已回复,任务单号'.$order->order_no,'','0');
+        }else{
+            $this->success('无申诉回复','','1');
+        }
+    }
+
     /*
      * 解析jwt token
      * */
