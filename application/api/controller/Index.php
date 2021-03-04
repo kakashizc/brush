@@ -25,7 +25,7 @@ class Index extends Api
     public function version()
     {
         $add = ['add'=>'http://abc.zhoujiasong.top/build.apk'];
-        $this->success('1.0.6',$add,'0');
+        $this->success('1.0.7',$add,'0');
     }
     public function mark(){
         //查找商家提现 商家充值 刷手申诉 未审核的数量,提供给角标显示

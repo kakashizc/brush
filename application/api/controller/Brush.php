@@ -11,7 +11,9 @@ namespace app\api\controller;
 
 use app\admin\model\BrushPlat;
 use app\admin\model\Feed;
+use app\admin\model\Order as OrderModel;
 use app\admin\model\OrderBrush;
+use app\admin\model\OrderItem;
 use app\admin\model\Plat;
 use app\common\controller\Api;
 use app\admin\model\BankBrush;
@@ -385,12 +387,13 @@ class Brush extends Api
     public function shensu()
     {
         $uid = $this->_uid;
-        $ret = \app\admin\model\Comp::get(['brush_id'=>$uid,'check'=>0]);
+        $ret = \app\admin\model\Comp::get(['brush_id'=>$uid,'checks'=>0,'status'=>'2']);
         if($ret){//如果存在,就查询订单信息 和 回复信息 一并返回
             $order = OrderBrush::get(['id'=>$ret->orderbrush_id]);
-            $ret->check = 1;
+            $ret->checks = 1;
             $re = $ret->save();
-            if ($re) $this->success('您有一个申诉订单商家已回复,任务单号'.$order->order_no,'','0');
+            $data['orderId'] = ($order->order_id);
+            if ($re) $this->success('您有一个申诉订单商家已回复,任务单号'.$order->order_no,$data,'0');
         }else{
             $this->success('无申诉回复','','1');
         }

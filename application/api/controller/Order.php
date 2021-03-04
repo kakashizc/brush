@@ -449,9 +449,14 @@ class Order extends Api
             if( $item['status'] == '4' ){
                 //如果状态=4 说明是申诉订单
                 $comp = Comp::get(['orderbrush_id'=>$item['id']]);
-                $Complain = Complain::get( $comp['complain_id']);
-                $ret[$key]['title'] = $Complain->title;
-                $ret[$key]['sta'] = $comp->status;
+                if($comp){
+                    $Complain = Complain::get( $comp['complain_id']);
+                    $ret[$key]['title'] = $Complain->title;
+                    $ret[$key]['sta'] = $comp->status;
+                }else{
+                    $ret[$key]['title'] = '';
+                    $ret[$key]['sta'] = '';
+                }
             }
         }
         if ( sizeof($all) > 0 ){
@@ -479,13 +484,24 @@ class Order extends Api
             $ret = array();
             //判断,如果是申诉订单, 需要查询出对应的申诉字段
             if ($orderInfo['brushs']['status'] == '4'){
-                $datas = OrderBrush::with('comps')->find()->toArray();
-                $ret['comp']['ctime'] = date('Y-m-d H:i:s',$datas['comps']['ctime']);
-                $ret['comp']['type'] = Db::name('complain')->where('id',$datas['comps']['complain_id'])->value('title');
-                $ret['comp']['act_money'] = $datas['act_money'];
+                $orders = \app\admin\model\Order::get($orderId);
+                $order_brush = OrderBrush::get(['order_no'=>$orders->order_no,'brush_id'=>$this->_uid]);
+                $comp = Comp::get(['orderbrush_id'=>$order_brush->id]);
+                $ret['comp']['feed'] = $comp['feed'];
+                $ret['comp']['ctime'] = date('Y-m-d H:i:s',$comp['ctime']);
+                $ret['comp']['type'] = Db::name('complain')->where('id',$comp['complain_id'])->value('title');
+                $ret['comp']['act_money'] = $orderInfo['brushs']['act_money'];
                 $ret['comp']['order_money'] = $orderInfo['goods_repPrice'];
-                $ret['comp']['say'] = $datas['comps']['say'];
-                $ret['comp']['feed'] = $datas['comps']['feed'];
+                $ret['comp']['say'] = $comp['say'];
+            }else{
+                $orders = \app\admin\model\Order::get($orderId);
+                $order_brush = OrderBrush::get(['order_no'=>$orders->order_no,'brush_id'=>$this->_uid]);
+                $comp = Comp::get(['orderbrush_id'=>$order_brush->id]);
+                if ($comp){
+                    $ret['comp']['feed'] = $comp['feed'];
+                }else{
+                    $ret['comp']['feed'] = '';
+                }
             }
             
             $ret['plat_name'] = $orderInfo['plat']['name'];
