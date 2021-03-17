@@ -200,6 +200,12 @@ class Order extends Backend
         if ($this->request->isPost()) {
             $params = $this->request->post("row/a");
             if ($params) {
+                if($params['goods_repPrice']<=0){
+                    $this->error('宝贝垫付价格必须大于零');
+                }
+                if($params['order_num']<=0){
+                    $this->error('单子数量必须大于零');
+                }
                 $params = $this->preExcludeFields($params);
                 $params['shop_id'] = $this->auth->id;
                 $params['order_no'] =  date('YmdHis').'_'.$this->auth->id;
